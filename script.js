@@ -92,10 +92,15 @@ function showRoster() {
     output += "<p>Note: Next Day Status = Spare</p>";
   }
 
-  output += "<p>Your Next 1 Month Trip is here:</p>";
+  output += `<p id="line">Your Next 1 Month Trip is here:</p>`;
   output += `
-            <div class="dayBox">
-            <strong>  >Date        |     Day        |    Train No.      |       Status</strong>
+            <div class="firstdayBox">
+              <div class="rowWrap">
+                <div class="col">>Date</div>
+                <div class="col">Day</div>
+                <div class="col">Train No.</div>
+                <div class="col">Status</div>
+              </div>
             </div>`;
 
   for (let i = 0; i < 30; i++) {
@@ -110,10 +115,16 @@ function showRoster() {
     const status = (nextOffday === dayName) ? "Off Day" : "On-duty";
 
     output += `
-      <div class="dayBox">
-        <strong>  ${dateStr}        |     ${dayName}        |    ${nextTrain}      |       ${status}</strong>
-      </div>
-    `;
+  <div class="dayBox">
+    <div class="rowWrap">
+      <div class="col">${dateStr}</div>
+      <div class="col">${dayName}</div>
+      <div class="col">${nextTrain}</div>
+      <div class="col">${status}</div>
+    </div>
+  </div>
+`;
+
   }
 
   output += "</div>";

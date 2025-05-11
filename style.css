@@ -134,6 +134,12 @@ input[type="number"]:focus {
   font-family: sans-serif;
 }
 
+#line{
+  background-color: #000000;
+  color: white;
+  display: block;
+}
+
 .dayBox {
   background: #01ef90;
   margin: 10px 0;
@@ -142,18 +148,43 @@ input[type="number"]:focus {
   border-right: 8px solid #007bff;
   border-radius: 5px;
   text-align: center;
+  box-sizing: border-box;
+  width: 100%;
 }
+
+.firstdayBox {
+  background: #f2ff00;
+  margin: 10px 0;
+  padding: 10px;
+  border-left: 8px solid #087efd;
+  border-right: 8px solid #2003ff;
+  border-radius: 5px;
+  text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.rowWrap {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.col {
+  flex: 1; 
+  min-width: 100px; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+}
+
+
 
 .dayBox strong {
-  text-align: left;
-}
-
-.start {
-  background-color: #f9f9f9;
-  padding: 15px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  font-family: Arial, sans-serif;
+  text-align: center;
+  font-weight: bold;
 }
 
 h2 {
@@ -162,7 +193,7 @@ h2 {
 
 p {
   font-size: 16px;
-  color: #333;
+  color: #000000;
 }
 
 strong {
