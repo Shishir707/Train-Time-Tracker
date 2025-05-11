@@ -175,7 +175,7 @@ input[type="number"]:focus {
 }
 
 .col {
-  flex: 1; 
+  flex: 0; 
   min-width: 100px; 
   white-space: nowrap;
   overflow: hidden;
