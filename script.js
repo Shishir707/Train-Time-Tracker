@@ -86,6 +86,7 @@ function showRoster() {
       <p>Your Next Trip:</p>
       <p> Date | Day | Tr. No | Offday Info</p>
       <p>> ${todayDate} | ${tday} | ${trainNum} | ${offDay || 'No Offday'}</p>
+    </div>
   `;
 
   if (trainNum === 722 && tday === "Monday") {
