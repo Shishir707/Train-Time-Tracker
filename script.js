@@ -36,7 +36,7 @@ setTimeout(() => {
 }, 5000);
 
 
-function showRoster() {
+function createRoster() {
   const roaster = [
     [709, "Monday"], [740, "Monday"], ["781/782", "Tuesday"], ["799/800", "Sunday"],
     [2, null], [3, null], [722, "Sunday"], [787, "Tuesday"], [749, null],
@@ -152,6 +152,47 @@ function showRoster() {
   output += "</div>";
   parent.innerHTML = output;
 }
+
+function viewRoster() {
+  const parent = document.getElementById("displayArea");
+  const output = `
+    <h2>Here Is Your Roster</h2>
+    <img src="roster.jpeg" alt="Roster">
+    <strong>Note:</strong> Make sure to check all note.
+
+    <div style="margin-top: 20px;" id="note">
+      <h3>From Dhaka</h3><br>
+      <ul>
+        <li>If Sunday 722 is closed, then Tuesday 709 will be open.</li>
+        <li>If Monday 709 is closed, then Tuesday 719 will be open.</li>
+        <li>If Monday 707/708 is closed, then Tuesday 717 will be open.</li>
+        <li>If Monday 767 arrives, then Wednesday 704 will be open.</li>
+        <li>If Tuesday 707 arrives, then Wednesday rest: resume from Friday 4 up.</li>
+        <li>If Tuesday 1 up (769 is closed), will arrive Wednesday 718/782.</li>
+        <li>If Friday 773 is closed, then Saturday 707/750.</li>
+      </ul><br>
+
+      <h3>From Sylhet</h3><br>
+      <ul>
+        <li>If Sunday 769 goes, then Tuesday 710 will arrive.</li>
+        <li>If Monday 769 goes, then Wednesday 718 will arrive.</li>
+        <li>If Wednesday 717 goes, then Thursday: 710 will arrive.</li>
+      </ul><br>
+
+      <h3>From Chattogram</h3><br>
+      <ul>
+        <li>If Sunday 704 goes, then Monday 767 will arrive.</li>
+        <li>If Monday 722 goes, then Tuesday 703 (Spare) will arrive.</li>
+      </ul><br>
+    </div>
+  `;
+
+  parent.innerHTML = output;
+  parent.style.display = "block";
+}
+
+
+
 
 
 
