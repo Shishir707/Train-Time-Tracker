@@ -150,7 +150,6 @@ input[type="number"]:focus {
   text-align: center;
   box-sizing: border-box;
   width: 100%;
-  overflow: auto;
 }
 
 .firstdayBox {
@@ -163,18 +162,17 @@ input[type="number"]:focus {
   text-align: center;
   box-sizing: border-box;
   width: 100%;
-  overflow: auto;
 }
 
 .rowWrap {
   display: flex;
+  justify-content: space-between;
   text-align: center;
   flex-wrap: wrap;
-  min-width: 500px;
 }
 
 .col {
-  flex: 0; 
+  flex: 1; 
   min-width: 100px; 
   white-space: nowrap;
   overflow: hidden;
@@ -186,7 +184,6 @@ input[type="number"]:focus {
 
 .dayBox strong {
   text-align: center;
-  font-weight: bold;
 }
 
 h2 {
