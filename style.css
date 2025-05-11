@@ -38,9 +38,9 @@ header h1 {
 .nav-links {
   list-style: none;
   display: flex;
-  justify-content: flex-end; /* This pushes the links to the right */
+  justify-content: flex-end;
   padding: 10px 0;
-  margin-right: 30px; /* Adds some spacing from the right edge */
+  margin-right: 30px; 
 }
 
 
@@ -81,7 +81,7 @@ img {
 
 footer {
   background-color: #5a97d4;
-  color: red;
+  color: rgb(243, 5, 5);
   text-align: center;
   padding: 15px 0;
   margin-top: 40px;
@@ -148,7 +148,7 @@ input[type="number"]:focus {
 }
 
 .dayBox {
-  background: #01ef90;
+  background: rgb(12, 206, 12);
   margin: 10px 0;
   padding: 10px;
   border-left: 8px solid #007bff;

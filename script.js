@@ -30,7 +30,7 @@ else {
   greetingText = 'Good Night! LM/ALM';
 }
 
-greetingElement.innerHTML = `<h2>${greetingText}</h2>`;
+greetingElement.innerHTML=`<h2>${greetingText}</h2>`;
 setTimeout(() => {
   greetingElement.innerHTML = '';
 }, 5000);
@@ -40,7 +40,7 @@ function createRoster() {
   const roaster = [
     [709, "Monday"], [740, "Monday"], ["781/782", "Tuesday"], ["799/800", "Sunday"],
     [2, null], [3, null], [722, "Sunday"], [787, "Tuesday"], [749, null],
-    [738, null], ["816/815", "Wednesday"], ["707/708", "Monday"], [717, "Tuesday"],
+    [738, null], ["816", "Wednesday"],["815", "wednesday"], ["707/708", "Monday"], [717, "Tuesday"],
     [718, "Thursday"], [4, null], ["1+RT", null], [739, "Wednesday"], [710, "Monday"],
     [773, "Friday"], [774, "Friday"], ["737/750", "Wednesday"], [704, null],
     [701, "Monday"], [709, "Monday"], [740, "Monday"]
@@ -50,7 +50,20 @@ function createRoster() {
   const todayDate = today.toLocaleDateString('en-GB');
   const tday = today.toLocaleString('en-us', { weekday: 'long' });
 
-  const todaysDuty = document.getElementById("todaysDuty").value;
+  let todaysDuty = document.getElementById("todaysDuty").value.trim();
+  console.log("TodaysDuty input: ", todaysDuty); 
+
+
+  if (todaysDuty === "707" || todaysDuty === "708") {
+    todaysDuty = "707/708";
+  } else if (todaysDuty === "781" || todaysDuty === "782") {
+    todaysDuty = "781/782";
+  } else if (todaysDuty === "799" || todaysDuty === "800") {
+    todaysDuty = "799/800";
+  } else if (todaysDuty === "737" || todaysDuty === "750") {
+    todaysDuty = "737/750";
+  }
+
   let startIndex = -1;
 
   for (let idx = 0; idx < roaster.length; idx++) {
@@ -61,7 +74,11 @@ function createRoster() {
   }
 
   if (startIndex === -1) {
-    alert("Invalid! This is only for Dhaka Shade.");
+    const parent = document.getElementById("display");
+    parent.textContent = "";
+    const errorMsg = document.createElement("p");
+    errorMsg.textContent = "Invalid! This is only for Dhaka Shade.";
+    parent.appendChild(errorMsg);
     return;
   }
 
@@ -69,18 +86,22 @@ function createRoster() {
 
   function getNextTrainOverride(trainNum, dayName, isOffday) {
     const trainStr = String(trainNum);
-    if (trainStr === "722" && isOffday) return "709";
-    if (trainStr === "709" && isOffday) return "749";
-    if (trainStr === "707/708" && isOffday) return "773";
-    if (trainStr === "787" && ["Monday", "Tuesday"].includes(dayName)) return "704";
-    if (trainStr === "737" && ["Tuesday", "Wednesday", "Thursday"].includes(dayName)) return "4";
-    if (trainStr === "1" && ["Tuesday", "Wednesday"].includes(dayName)) return "781/782";
-    if (trainStr === "739" && isOffday) return "781/782";
-    if (trainStr === "773" && isOffday) return "737/750";
-    if (trainStr === "710" && isOffday) return "710";
-    if (trainStr === "739" && ["Sunday", "Monday"].includes(dayName)) return "718";
-    if (trainStr === "717" && dayName === "Wednesday") return "710";
-    if (trainStr === "704" && dayName === "Sunday") return "787";
+    const trainParts = trainStr.split('/');
+
+    if (trainParts.includes("722") && isOffday) return "709";
+    if (trainParts.includes("709") && isOffday) return "749";
+    if (trainParts.includes("707") && isOffday) return "773";
+    if (trainParts.includes("787") && ["Monday", "Tuesday"].includes(dayName)) return "704";
+    if (trainParts.includes("737") && ["Tuesday", "Wednesday", "Thursday"].includes(dayName)) return "4";
+    if (trainParts.includes("1") && ["Tuesday", "Wednesday"].includes(dayName)) return "781/782";
+    if (trainParts.includes("739") && isOffday) return "781/782";
+    if (trainParts.includes("773") && isOffday) return "737/750";
+    if (trainParts.includes("774") && isOffday) return "774";
+    if (trainParts.includes("710") && isOffday) return "710";
+    if (trainParts.includes("739") && ["Sunday", "Monday"].includes(dayName)) return "718";
+    if (trainParts.includes("717") && dayName === "Wednesday") return "710";
+    if (trainParts.includes("704") && dayName === "Sunday") return "787";
+
     return null;
   }
 
@@ -137,7 +158,7 @@ function createRoster() {
     const status = (nextOffday === dayName) ? "Off Day" : "On-duty";
 
     output += `
-  <div class="dayBox">
+  <div class="dayBox" style="background: ${status === 'Off Day' ? '#f64545' : '#01ef90'};">
     <div class="rowWrap">
       <div class="col">${dateStr}</div>
       <div class="col">${dayName}</div>
@@ -145,13 +166,13 @@ function createRoster() {
       <div class="col">${status}</div>
     </div>
   </div>
-`;
-
+  `;
   }
 
   output += "</div>";
   parent.innerHTML = output;
 }
+
 
 function viewRoster() {
   const parent = document.getElementById("displayArea");
