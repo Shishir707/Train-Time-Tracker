@@ -125,3 +125,49 @@ input[type="number"]:focus {
 #btn:hover {
   background-color: #ff0000;
 }
+
+.innerStyle {
+  background: #fefefe;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-family: sans-serif;
+}
+
+.dayBox {
+  background: #01ef90;
+  margin: 10px 0;
+  padding: 10px;
+  border-left: 8px solid #007bff;
+  border-right: 8px solid #007bff;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.dayBox strong {
+  text-align: left;
+}
+
+.start {
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  color: #007bff;
+}
+
+p {
+  font-size: 16px;
+  color: #333;
+}
+
+strong {
+  font-weight: bold;
+  white-space: pre;
+}
+
+
