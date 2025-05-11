@@ -168,10 +168,9 @@ input[type="number"]:focus {
 
 .rowWrap {
   display: flex;
-  justify-content: space-between;
   text-align: center;
   flex-wrap: wrap;
-  min-width: 400px;
+  min-width: 300px;
 }
 
 .col {
