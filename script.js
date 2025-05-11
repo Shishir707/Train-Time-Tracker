@@ -40,7 +40,7 @@ function createRoster() {
   const roaster = [
     [709, "Monday"], [740, "Monday"], ["781/782", "Tuesday"], ["799/800", "Sunday"],
     [2, null], [3, null], [722, "Sunday"], [787, "Tuesday"], [749, null],
-    [738, null], ["816", "Wednesday"],["815", "wednesday"], ["707/708", "Monday"], [717, "Tuesday"],
+    [738, null], ["816/815", "Wednesday"],["707/708", "Monday"], [717, "Tuesday"],
     [718, "Thursday"], [4, null], ["1+RT", null], [739, "Wednesday"], [710, "Monday"],
     [773, "Friday"], [774, "Friday"], ["737/750", "Wednesday"], [704, null],
     [701, "Monday"], [709, "Monday"], [740, "Monday"]
@@ -50,10 +50,24 @@ function createRoster() {
   const todayDate = today.toLocaleDateString('en-GB');
   const tday = today.toLocaleString('en-us', { weekday: 'long' });
 
-  let todaysDuty = document.getElementById("todaysDuty").value.trim();
-  console.log("TodaysDuty input: ", todaysDuty); 
+  let todaysDuty = document.getElementById("todaysDuty").value.trim()
+  
+  if (todaysDuty === "") {
+  Swal.fire({
+    icon: "warning",
+    title: "Empty Input!",
+    text: "Please Enter Your Train Number to Continue."
+  });
+  return;
+  }
 
-
+  Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Your Schedule Is Ready.",
+  showConfirmButton: false,
+  timer: 1000
+  });
   if (todaysDuty === "707" || todaysDuty === "708") {
     todaysDuty = "707/708";
   } else if (todaysDuty === "781" || todaysDuty === "782") {
@@ -62,6 +76,8 @@ function createRoster() {
     todaysDuty = "799/800";
   } else if (todaysDuty === "737" || todaysDuty === "750") {
     todaysDuty = "737/750";
+  } else if (todaysDuty === "816" || todaysDuty === "815"){
+    todaysDuty = "816/815"
   }
 
   let startIndex = -1;
@@ -74,13 +90,14 @@ function createRoster() {
   }
 
   if (startIndex === -1) {
-    const parent = document.getElementById("display");
-    parent.textContent = "";
-    const errorMsg = document.createElement("p");
-    errorMsg.textContent = "Invalid! This is only for Dhaka Shade.";
-    parent.appendChild(errorMsg);
-    return;
-  }
+    Swal.fire({
+    icon: "error",
+    title: "Sorry!",
+    html: "📌 Note: This schedule is prepared only for <strong>Dhaka Shed staff</strong>."
+  });
+  return;
+}
+
 
   let [trainNum, offDay] = roaster[startIndex];
 
@@ -132,8 +149,18 @@ function createRoster() {
   `;
 
   if (trainNum === 722 && tday === "Monday") {
-    output += "<p>Note: Next Day Status = Spare</p>";
-  }
+  Swal.fire({
+    icon: "info",
+    title: "Special Notice for Train 722",
+    html: `
+      Please report to <strong>Spare</strong> via trains <strong>701, 721, 703, or 813</strong>.<br>
+      <strong>Important:</strong> Do <u>not</u> proceed with <strong>815</strong> or <strong>741</strong>—take proper rest.
+    `,
+    confirmButtonText: "Understood",
+    confirmButtonColor: "#3085d6"
+  });
+}
+
 
   output += `<p id="line">Your Next 1 Month Trip is here:</p>`;
   output += `

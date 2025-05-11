@@ -282,5 +282,33 @@ li {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.caution {
+  background-color: #ffc107;
+  color: #000;
+  padding: 12px;
+  margin: 15px 0;
+  border-left: 6px solid #ff9800;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 6px;
+}
+
+#datetime {
+  font-size: 13px;
+  font-weight: bold;
+  color: #100f0f;
+  text-align: center;
+  background-color: #f5f5f5;
+  padding: 2px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+  margin: 10px auto;
+  font-family: 'Arial', sans-serif;
+}
+
+
+
 
 
