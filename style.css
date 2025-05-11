@@ -177,8 +177,8 @@ input[type="number"]:focus {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-weight: bold;
   font-size: smaller;
+  font-weight: 500;
 }
 
 
