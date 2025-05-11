@@ -16,6 +16,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  text-align: center;
 }
 
 
@@ -37,9 +38,11 @@ header h1 {
 .nav-links {
   list-style: none;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end; /* This pushes the links to the right */
   padding: 10px 0;
+  margin-right: 30px; /* Adds some spacing from the right edge */
 }
+
 
 .nav-links li {
   margin: 0 15px;
@@ -76,4 +79,49 @@ footer {
   padding: 15px 0;
   margin-top: 40px;
   font-size: 0.9rem;
+}
+
+label {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 10px;
+  display: block;
+}
+
+input[type="number"] {
+  padding: 10px;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+input[type="number"]:focus {
+  border-color: #0055a5;
+  outline: none;
+  background-color: #f0f8ff;
+}
+
+#greeting h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #f900e0;
+}
+
+#btn {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#btn:hover {
+  background-color: #ff0000;
 }

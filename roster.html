@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Home : Train Time Tracker</title>
+  <title>Schedule : Train Time Tracker</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -24,9 +24,17 @@
   </nav>
 
   <main class="container">
-    <div id="greeting"></div>
-    <h2>Welcome to Train Time Tracker</h2>
-    <p>Your one-stop solution for smart duty planning and real-time train scheduling.</p>
+    <h2>Track Your Train Duties</h2>
+    <p>Plan and manage your upcoming 30 days schedule with ease and view your offdays.</p>
+    <br><br>
+    <label for="todaysDuty">Enter Your Today's Duty Train Number:</label>
+    <input type="number" id="todaysDuty" name="todaysDuty" required placeholder="e.g. 722">
+    <br><br>
+    <button id="btn" onclick="showRoster()">View Schedule</button>
+    <br><br>
+    <div id="display"></div>
+
+
   </main>
 
   <footer>
