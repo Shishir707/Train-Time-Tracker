@@ -170,4 +170,26 @@ strong {
   white-space: pre;
 }
 
+.maintenance{
+  text-align: center;
+  padding: 40px;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.maintenance h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.maintenance p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.maintenance .small {
+  font-size: 0.9rem;
+  color: #777;
+}
 
