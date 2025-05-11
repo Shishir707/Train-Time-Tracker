@@ -1,19 +1,40 @@
-const currentHour = new Date().getHours();
+const dateElement = document.getElementById("datetime");
+  const now = new Date();
+  const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  const day = String(now.getDate()).padStart(2, '0');
+  const month = monthNames[now.getMonth()];
+  const year = now.getFullYear();
+  const weekday = dayNames[now.getDay()];
+
+  dateElement.textContent = `${day}-${month}-${year} | ${weekday}`;
+
+  const currentHour = now.getHours();
 const greetingElement = document.getElementById('greeting');
 let greetingText = '';
 
 if (currentHour < 12) {
   greetingText = 'Good Morning! LM/ALM';
-} else if (currentHour >= 12 && currentHour < 16) {
+} 
+else if (currentHour >= 12 && currentHour < 13) {
   greetingText = 'Good Noon! LM/ALM';
-} else if (currentHour >= 16 && currentHour < 20) {
+} 
+else if (currentHour >= 13 && currentHour < 16) {
   greetingText = 'Good Afternoon! LM/ALM';
-} else {
+} 
+else if (currentHour >= 16 && currentHour < 20) {
+  greetingText = 'Good Evening! LM/ALM';
+} 
+else {
   greetingText = 'Good Night! LM/ALM';
 }
+
 greetingElement.innerHTML = `<h2>${greetingText}</h2>`;
 setTimeout(() => {
-  greetingElement.innerHTML = '';}, 5000);
+  greetingElement.innerHTML = '';
+}, 5000);
+
 
 function showRoster() {
   const roaster = [
