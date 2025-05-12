@@ -659,7 +659,17 @@ header .container {
   background-color: #115bda;
 }
 
+.image-container {
+  text-align: center;
+}
 
+.image {
+  max-width: 40%;
+  max-height: 50%;
+  object-fit: contain;
+  text-align: center;
+  justify-content: center;
+}
 
 
 
