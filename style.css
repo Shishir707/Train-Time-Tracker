@@ -29,7 +29,11 @@ header {
 
 header h1 {
   font-size: 2rem;
+  white-space: nowrap;
+  overflow: hidden; /* Optional: prevents overflow if text is too long */
+  text-overflow: ellipsis; /* Optional: adds ellipsis if text overflows */
 }
+
 
 /* Hamburger button - right aligned */
 .hamburger {
@@ -175,29 +179,6 @@ p {
 strong {
   font-weight: bold;
   white-space: pre;
-}
-
-.maintenance{
-  text-align: center;
-  padding: 40px;
-  border-radius: 12px;
-  background-color: #fff;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.maintenance h1 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.maintenance p {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-}
-
-.maintenance .small {
-  font-size: 0.9rem;
-  color: #777;
 }
 
 #displayArea {
@@ -532,8 +513,8 @@ strong{
 /* Center the div and style the elements */
 .train-selection {
   width: 100%;
-  max-width: 500px; /* Optional: Sets max width for better responsiveness */
-  margin: 0 auto; /* Centers the div horizontally */
+  max-width: 480px; 
+  margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
