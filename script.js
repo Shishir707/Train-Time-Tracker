@@ -462,32 +462,26 @@ function process(data) {
 
 
 function download() {
-  // Create a link element
-  const link = document.createElement("a");
-
-  // Set the URL of the file you want to download
-  link.href = "E:\Roaster/timeTable.pdf"; // Replace with the actual path to your timeTable.pdf file
-
-  // Set the download attribute to specify the filename
-  link.download = "timeTable.pdf";
-
-  // Append the link to the body (it needs to be in the DOM for the download to work)
-  document.body.appendChild(link);
-
-  // Trigger the download
-  link.click();
-
-  // Remove the link from the DOM after the download is triggered
-  document.body.removeChild(link);
-
-  // Show a SweetAlert confirmation for successful download
   Swal.fire({
-    icon: 'success',
-    title: 'Downloaded!',
-    text: 'Your Time Table has been downloaded successfully.',
-    confirmButtonColor: '#4CAF50'
+    title: 'Are you sure?',
+    text: "Do you want to download the timeTable.pdf?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, download it!',
+    cancelButtonText: 'No, cancel!',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const link = document.createElement('a');
+      link.download = 'timeTable.pdf';
+      link.href = 'timeTable.pdf'; 
+      link.click(); 
+      Swal.fire('Downloaded!', 'Your timeTable.pdf has been downloaded.', 'success');
+    } else {
+      Swal.fire('Cancelled', 'Your download has been cancelled.', 'info');
+    }
   });
 }
+
 
 
 
