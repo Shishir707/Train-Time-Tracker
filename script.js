@@ -77,6 +77,7 @@ function viewRoster() {
 
   parent.innerHTML = output;
   parent.style.display = "block";
+  document.getElementById("display").innerHTML = "";
 }
 
 function createRoster(){
@@ -379,6 +380,8 @@ for (let j = 0; j < 30; j++) {
 `;
 childTwo.appendChild(row);
    document.getElementById("display").style.display = "block";
+   document.getElementById("todaysDuty").value = ""
+   document.getElementById("displayArea").innerHTML = null;
 }
 
 
