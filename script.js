@@ -400,14 +400,27 @@ function search() {
             text: 'Please Enter a Train Number Before Searching.',
             confirmButtonColor: '#3085d6'
         });
-        return; // Exit function if no input
+        return;
+      
     }
     const url = `https://bdrail-available-seat-cheiker-server-side.onrender.com/api/train/${number}`;
 
     fetch(url)
-        .then(res => res.json())
-        .then (data => process (data));
+    .then(res => res.json())
+    .then(data => {
+        process(data);
         document.getElementById("trainNumber").value = "";
+    })
+    .catch(error => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Not Train Found For This Number',
+            text: error.message,
+            confirmButtonColor: '#d33'
+        });
+        resultDiv.innerHTML = "";
+    });
+
 }
 
 
