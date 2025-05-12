@@ -35,6 +35,44 @@ setTimeout(() => {
   greetingElement.innerHTML = '';
 }, 5000);
 
+function viewRoster() {
+  const parent = document.getElementById("displayArea");
+  const output = `
+    <h2>Here Is Your Roster</h2>
+    <img src="roster.jpeg" alt="Roster">
+    <strong>Note:</strong> Make sure to check all note.
+
+    <div style="margin-top: 20px;" id="note">
+      <h3>From Dhaka</h3><br>
+      <ul>
+        <li>If Sunday 722 is closed, then Tuesday 709 will be open.</li>
+        <li>If Monday 709 is closed, then Tuesday 749 will be open.</li>
+        <li>If Monday 707/708 is closed, then Tuesday 773 will be open.</li>
+        <li>If Monday 787 arrives, then Wednesday 704 will be open.</li>
+        <li>If Tuesday 737 arrives, then Wednesday rest: resume from Friday 4 DN.</li>
+        <li>If Tuesday 1 up /(739 is closed), will arrive Wednesday 718/782.</li>
+        <li>If Friday 773 is closed, then Saturday 737/750.</li>
+      </ul><br>
+
+      <h3>From Sylhet</h3><br>
+      <ul>
+        <li>If Sunday 739 goes, then Tuesday 710 will arrive.</li>
+        <li>If Monday 739 goes, then Wednesday 718 will arrive.</li>
+        <li>If Wednesday 717 goes, then Thursday 710 will arrive.</li>
+      </ul><br>
+
+      <h3>From Chattogram</h3><br>
+      <ul>
+        <li>If Sunday 704 goes, then Monday 787 will arrive.</li>
+        <li>If Monday 722 goes, then Tuesday 703 (Spare) will arrive.</li>
+      </ul><br>
+    </div>
+  `;
+
+  parent.innerHTML = output;
+  parent.style.display = "block";
+}
+
 function createRoster(){
   const roster = [["709","Saturday","Dhaka","Sylhet","Monday"],
           ["740","Sunday","Sylhet","Dhaka","Monday"],
