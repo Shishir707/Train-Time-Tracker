@@ -389,15 +389,46 @@ childTwo.appendChild(row);
 }
 }
 
-function search(){
-    var number =document.getElementById("trainNumber").value ;
 
-    var url = `https://bdrail-available-seat-cheiker-server-side.onrender.com/api/train/${number}`
-    fetch (url)
-    .then (res => res.json())
-    .then (data => process (data));
+function search() {
+    const number = document.getElementById("trainNumber").value;
+    console.log(number)
+    const url = `https://bdrail-available-seat-cheiker-server-side.onrender.com/api/train/${number}`;
+
+    fetch(url)
+        .then(res => res.json())
+        .then (data => process (data));
 }
 
+
+function process(data) {
+    const parent = document.getElementById("result");
+    parent.textContent = "";
+
+    const child = document.createElement("div");
+    child.classList.add("innerStyle");
+
+    let routeDetails = data.routes.map(route => {
+        return `<li>
+          <strong>${route.city}</strong><br>
+          Arrival: ${route.arrival_time || "—"}<br>
+          Departure: ${route.departure_time || "—"}<br>
+          Duration: ${route.duration || "—"}<br>
+          Halt: ${route.halt || "—"} min
+        </li>`;
+    }).join("");
+
+    child.innerHTML = `
+        <h2>🚆 Train Name: ${data.train_name}</h2>
+        <h3>Train Number: ${data.train_model}</h3>
+        <p><strong>Running Days:</strong> ${data.days.join(", ")}</p>
+        <h3>Route Information:</h3>
+        <ul>${routeDetails}</ul>
+        <p><strong>Total Duration:</strong> ${data.total_duration}</p>
+    `;
+
+    parent.appendChild(child);
+}
 
 
 
