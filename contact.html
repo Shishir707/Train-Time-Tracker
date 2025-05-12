@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
   <header>
@@ -23,12 +24,41 @@
       <li><a href="contact.html">Contact Us</a></li>
     </ul>
   </div>
+  <main class="contact-container">
+    <div class="contact-card">
+      <div class="contact-image" style="text-align: center; margin-top: 30px;">
+        <img src="service.png" alt="Contact" style="max-width: 40%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
 
-  <div class="maintenance">
-    <h1>🚧 Site Under Maintenance 🚧</h1>
-    <p>We're currently making improvements.<br>Please check back later.</p>
-    <p class="small">— Thank you for your patience —</p>
-  </div>
+      <h2>📬 Contact Us</h2>
+      <p>If you have any questions, suggestions, or feedback — we'd love to hear from you!</p>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Your Name" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Your Email" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+
+      <div class="social-links">
+        <p>Follow us on:</p>
+        <a href="https://facebook.com" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com" target="_blank" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://linkedin.com" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <!-- Phone Number -->
+      <div class="contact-info">
+        <p><strong>Call Us:</strong> <a href="tel:+8801611802209">01611802209</a></p>
+      </div>
+
+    </div>
+  </main>
 
 
   <footer>
