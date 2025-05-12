@@ -107,14 +107,15 @@ img {
   text-align: center;
 }
 
+
 footer {
   background-color: #5a97d4;
   color: rgb(243, 5, 5);
   text-align: center;
   padding: 15px 0;
-  margin-top: 40px;
   font-size: 0.9rem;
 }
+
 
 label {
   font-size: 1rem;
@@ -379,7 +380,6 @@ strong{
     white-space: nowrap;
 }
 
-/* Optional: Color based on status */
 .status {
     font-weight: bold;
 }
@@ -400,7 +400,7 @@ strong{
   position: absolute;
   bottom: 580px;
   left: 3px;
-  background-color: #062648;
+  background-color: #11b43a;
   color: white;
   padding: 8px 16px;
   border: none;
@@ -411,7 +411,7 @@ strong{
 }
 
 #viewRoster:hover {
-  background-color: #0e853e;
+  background-color: #f5060e;
 }
 
 .swal2-popup.swal-full-image {
@@ -571,22 +571,57 @@ strong{
   outline: none;
 }
 
-.innerStyle {
-  background: #f2f2f2;
+#result {
+  margin-top: 30px;
   padding: 20px;
-  border-radius: 10px;
+  background-color: #f4f9ff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+#result h2 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+#result p {
+  font-size: 1rem;
+  margin: 4px 0;
+}
+
+#result h3 {
   margin-top: 20px;
+  color: #1a5276;
 }
-.innerStyle h2, .innerStyle h3 {
-  margin-bottom: 10px;
+
+#result table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 0.95rem;
 }
-.innerStyle ul {
-  list-style-type: none;
-  padding-left: 0;
+
+#result th, #result td {
+  border: 1px solid #d6eaf8;
+  padding: 10px;
+  text-align: center;
 }
-.innerStyle li {
-  margin-bottom: 10px;
+
+#result th {
+  background-color: #2874a6;
+  color: white;
 }
+
+#result tr:nth-child(even) {
+  background-color: #ebf5fb;
+}
+
+#result tr:hover {
+  background-color: #d6eaf8;
+}
+
 
 
 

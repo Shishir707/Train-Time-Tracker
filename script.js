@@ -358,15 +358,15 @@ for (let j = 0; j < 30; j++) {
     }
     
     const row = document.createElement("div");
-    row.className = "duty-row"; // Add class for styling
+    row.className = "duty-row"; 
 
-    let bgColor = "#f9fafb"; // default
+    let bgColor = "#f9fafb"; 
     if (dayStatus === "Scheduled") {
-      bgColor = "#90ee90"; // light green
+      bgColor = "#90ee90"; 
     } else if (dayStatus === "Off Day") {
-      bgColor = "rgb(240, 135, 135)"; // light red
+      bgColor = "rgb(240, 135, 135)";
     } else if (dayStatus === "Rest") {
-      bgColor = "#efce61"; // light yellow
+      bgColor = "#efce61"; 
     }
 
     row.style.backgroundColor = bgColor;
@@ -401,33 +401,51 @@ function search() {
 }
 
 
-function process(data) {
-    const parent = document.getElementById("result");
-    parent.textContent = "";
+function search() {
+  const number = document.getElementById("trainNumber").value;
+  const resultDiv = document.getElementById("result");
+  resultDiv.innerHTML = "Loading...";
 
-    const child = document.createElement("div");
-    child.classList.add("innerStyle");
+  fetch(`https://bdrail-available-seat-cheiker-server-side.onrender.com/api/train/${number}`)
+    .then(res => {
+      if (!res.ok) throw new Error("Train not found");
+      return res.json();
+    })
+    .then(data => {
+      let html = `
+        <h2>${data.train_name}</h2>
+        <p><strong>Train Number:</strong> ${data.train_model}</p>
+        <p><strong>Operates On:</strong> ${data.days.join(", ")}</p>
+        <p><strong>Total Journey Time:</strong> ${data.total_duration}</p>
+        <h3>Route Details:</h3>
+        <table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse: collapse;">
+          <tr>
+            <th>Station</th>
+            <th>Arrival</th>
+            <th>Departure</th>
+            <th>Halt (min)</th>
+            <th>Duration from Previous</th>
+          </tr>
+      `;
 
-    let routeDetails = data.routes.map(route => {
-        return `<li>
-          <strong>${route.city}</strong><br>
-          Arrival: ${route.arrival_time || "—"}<br>
-          Departure: ${route.departure_time || "—"}<br>
-          Duration: ${route.duration || "—"}<br>
-          Halt: ${route.halt || "—"} min
-        </li>`;
-    }).join("");
+      data.routes.forEach(route => {
+        html += `
+          <tr>
+            <td>${route.city.replace(/_/g, " ")}</td>
+            <td>${route.arrival_time ?? "-"}</td>
+            <td>${route.departure_time ?? "-"}</td>
+            <td>${route.halt ?? "-"}</td>
+            <td>${route.duration ?? "-"}</td>
+          </tr>
+        `;
+      });
 
-    child.innerHTML = `
-        <h2>🚆 Train Name: ${data.train_name}</h2>
-        <h3>Train Number: ${data.train_model}</h3>
-        <p><strong>Running Days:</strong> ${data.days.join(", ")}</p>
-        <h3>Route Information:</h3>
-        <ul>${routeDetails}</ul>
-        <p><strong>Total Duration:</strong> ${data.total_duration}</p>
-    `;
-
-    parent.appendChild(child);
+      html += `</table>`;
+      resultDiv.innerHTML = html;
+    })
+    .catch(err => {
+      resultDiv.innerHTML = `<p style="color:red;">Error: ${err.message}</p>`;
+    });
 }
 
 
