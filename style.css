@@ -7,7 +7,7 @@
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #ffffff;
   color: #333;
 }
 
@@ -411,7 +411,12 @@ strong{
 }
 
 #viewRoster:hover {
-  background-color: #1aba5a;
+  background-color: #0e853e;
+}
+
+.swal2-popup.swal-full-image {
+  padding: 5px;
+  max-width: none;
 }
 
 

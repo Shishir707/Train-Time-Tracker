@@ -42,14 +42,11 @@ setTimeout(() => {
 }, 5000);
 
 function viewRoster() {
-  const parent = document.getElementById("displayArea");
-  const output = `
-    <h2>Here Is Your Roster</h2>
-    <img src="roster.jpeg" alt="Roster">
-    <strong>Note:</strong> Make sure to check all note.
-
-    <div style="margin-top: 20px;" id="note">
-      <h3>From Dhaka</h3><br>
+  const htmlContent = `
+    <img src="roster.jpeg" alt="Roster" style="width: 100%; height: auto; display: block; margin-bottom: 15px;">
+    <p><strong>Note:</strong> Make sure to check all notes below.</p>
+    <div style="text-align: left; font-size: 14px;">
+      <h4>From Dhaka</h4>
       <ul>
         <li>If Sunday 722 is closed, then Tuesday 709 will be open.</li>
         <li>If Monday 709 is closed, then Tuesday 749 will be open.</li>
@@ -58,27 +55,34 @@ function viewRoster() {
         <li>If Tuesday 737 arrives, then Wednesday rest: resume from Friday 4 DN.</li>
         <li>If Tuesday 1 up /(739 is closed), will arrive Wednesday 718/782.</li>
         <li>If Friday 773 is closed, then Saturday 737/750.</li>
-      </ul><br>
-
-      <h3>From Sylhet</h3><br>
+      </ul>
+      <h4>From Sylhet</h4>
       <ul>
         <li>If Sunday 739 goes, then Tuesday 710 will arrive.</li>
         <li>If Monday 739 goes, then Wednesday 718 will arrive.</li>
         <li>If Wednesday 717 goes, then Thursday 710 will arrive.</li>
-      </ul><br>
-
-      <h3>From Chattogram</h3><br>
+      </ul>
+      <h4>From Chattogram</h4>
       <ul>
         <li>If Sunday 704 goes, then Monday 787 will arrive.</li>
         <li>If Monday 722 goes, then Tuesday 703 (Spare) will arrive.</li>
-      </ul><br>
+      </ul>
     </div>
   `;
 
-  parent.innerHTML = output;
-  parent.style.display = "block";
-  document.getElementById("display").innerHTML = "";
+  Swal.fire({
+    title: 'Duty Roster',
+    html: htmlContent,
+    width: '90%', // near full screen width
+    customClass: {
+      popup: 'swal-full-image'
+    },
+    showCloseButton: true,
+    confirmButtonText: 'Close'
+  });
 }
+
+
 
 function createRoster(){
   const roster = [["709","Saturday","Dhaka","Sylhet","Monday"],
