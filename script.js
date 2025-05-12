@@ -262,6 +262,26 @@ var childThree = document.createElement("div");
 
 // Prompt for today's duty number
 let todaysDuty = document.getElementById("todaysDuty").value.trim()
+if (todaysDuty === "") {
+    Swal.fire({
+        title: 'Input Required!',
+        text: "Please Enter Today's Train Number.",
+        icon: 'warning',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#007bff',
+    });
+    return;
+}
+
+Swal.fire({
+  icon: 'info',
+  title: 'Almost Ready!',
+  text: 'Your Train Duty Roster is Nearly Complete.',
+  showConfirmButton: false,
+  timer: 1000,
+  timerProgressBar: true
+});
+
 
 let index = -1;
 let status = "";
