@@ -529,6 +529,50 @@ strong{
 }
 
 
+/* Center the div and style the elements */
+.train-selection {
+  width: 100%;
+  max-width: 500px; /* Optional: Sets max width for better responsiveness */
+  margin: 0 auto; /* Centers the div horizontally */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  text-align: center;
+  margin-top: 25px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.train-selection h2 {
+  font-size: 1.8rem;
+  color: #007BFF; /* Header color */
+  margin-bottom: 15px;
+}
+
+.train-selection label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.train-selection input[type="number"] {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+.train-selection input[type="number"]:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+
+
 
 
 

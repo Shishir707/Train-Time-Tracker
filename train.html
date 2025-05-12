@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Home</title>
+  <title>Train Information</title>
   <link rel="stylesheet" href="style.css" />
-</head>
 <body>
   <header>
     <div class="container">
@@ -24,18 +23,18 @@
       <li><a href="contact.html">Contact Us</a></li>
     </ul>
   </div>
-
-
-  <main class="container">
-    <div id="greeting"></div>
-    <h2>Welcome to Train Time Tracker</h2>
-    <p>Your one-stop solution for smart duty planning and real-time train scheduling.</p>
+  
+    <div class="train-selection">
+        <h2>Bangladesh Railway</h2>
+        <label for="trainNumber">Select Your Preferred Train</label>
+        <input type="number" id="trainNumber" name="trainNumber" placeholder="e. g .707" required />
+        <br>
+        <button id="btn" onclick="search()">Search Train</button>
+    </div>
     <br>
-    <br><br><br>
-    <div id="displayArea"></div>
-    <br><br>
-    <img src="train.jpg" alt="Train">
-  </main>
+    <div id="result"></div>
+    <br><br><br><br><br><br><br><br>
+
 
   <footer>
     <div class="container">

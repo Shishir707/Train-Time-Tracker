@@ -387,9 +387,20 @@ childTwo.appendChild(row);
    document.getElementById("todaysDuty").value = ""
    document.getElementById("displayArea").innerHTML = null;
 }
-
-
 }
+
+function search(){
+    var number =document.getElementById("trainNumber").value ;
+
+    var url = `https://bdrail-available-seat-cheiker-server-side.onrender.com/api/train/${number}`
+    fetch (url)
+    .then (res => res.json())
+    .then (data => process (data));
+}
+
+
+
+
 
 
 
