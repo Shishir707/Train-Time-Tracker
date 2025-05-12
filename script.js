@@ -398,6 +398,7 @@ function search() {
     fetch(url)
         .then(res => res.json())
         .then (data => process (data));
+        document.getElementById("trainNumber").value = "";
 }
 
 
