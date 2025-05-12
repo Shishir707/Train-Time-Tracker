@@ -313,7 +313,7 @@ function createRoster(){
           ["2","Saturday","Dhaka","Akhaura",null],
           ["3","Sunday","Akhaura","Dhaka",null],
           ["722","Monday","Dhaka","Chattogram","Sunday"],
-          ["787","Tuesday","Dhaka","Chattogram","Tuesday"],
+          ["787","Tuesday","Chattogram","Dhaka","Tuesday"],
           ["749","Wednesday","Dhaka","Kishorganj",null],
           ["738","Thursday","Kishorganj","Dhaka",null],
           ["816","Friday","Dhaka","Chattogram","Wednesday"],
@@ -364,7 +364,7 @@ function createRoster(){
           ["2","Monday","Dhaka","Akhaura",null],
           ["3","Tuesday","Akhaura","Dhaka",null],
           ["722","Wednesday","Dhaka","Chattogram","Sunday"],
-          ["787","Thursday","Dhaka","Chattogram","Tuesday"],
+          ["787","Thursday","Chattogram","Dhaka","Tuesday"],
           ["749","Friday","Dhaka","Kishorganj",null],
           ["738","Saturday","Kishorganj","Dhaka",null],
           ["816","Sunday","Dhaka","Chattogram","Wednesday"],
@@ -375,7 +375,7 @@ function createRoster(){
           ["773","Friday","Dhaka","Sylhet","Friday"],
           ["737/750","Saturday","Dhaka","Kishorganj","Wednesday"],
           ["704","Sunday","Dhaka","Chattogram",null],
-          ["787","Monday","Dhaka","Chattogram","Tuesday"],
+          ["787","Monday","Chattogram","Dhaka","Tuesday"],
           ["N/A","Tuesday","N/A","N/A","Rest"],
           ["704","Wednesday","Dhaka","Chattogram",null],
           ["701","Thursday","Chattogram","Dhaka","Monday"],
@@ -463,8 +463,7 @@ if (index === -1) {
 }
 
 // Print next 30 days
-childTwo.innerHTML = `<h4>Your Next 30 Days Schedule</h4><br>
-                  <strong>Date |  Day  |Train No.| From | To | Status</strong>
+childTwo.innerHTML = `<h4>Your Next 30 Days Schedule</h4>
                   <p>-------------------------------------------------------</p>
                   `
     parent.appendChild(childTwo)
@@ -484,10 +483,23 @@ for (let j = 0; j < 30; j++) {
     } else if (offDay === "Rest") {
         dayStatus = "Rest";
     }
-
+    
     const row = document.createElement("div");
-    row.innerHTML = `<strong>${dateStr}|${dayName}|${nextTrain}|${fromStation}|${toStation}|${dayStatus}</strong>`;
-    childTwo.appendChild(row); 
+    row.className = "duty-row"; // Add class for styling
+    row.innerHTML = `
+      <div class="duty-date">
+        <strong>${dateStr}</strong> | <strong>${dayName}</strong>
+      </div>
+      <p></p>
+      <div class="duty-info">
+        <span><strong>Train No:</strong> ${nextTrain}</span>
+        <span><strong>Status:</strong> ${dayStatus}</span>
+        <span><strong>From:</strong> ${fromStation}</span>
+        <span><strong>To:</strong> ${toStation}</span>
+      </div>
+      `;
+    childTwo.appendChild(row);
+
 }
 
 
