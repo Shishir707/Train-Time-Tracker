@@ -392,7 +392,16 @@ childTwo.appendChild(row);
 
 function search() {
     const number = document.getElementById("trainNumber").value;
-    console.log(number)
+
+    if (number === "") {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Input Required',
+            text: 'Please Enter a Train Number Before Searching.',
+            confirmButtonColor: '#3085d6'
+        });
+        return; // Exit function if no input
+    }
     const url = `https://bdrail-available-seat-cheiker-server-side.onrender.com/api/train/${number}`;
 
     fetch(url)
