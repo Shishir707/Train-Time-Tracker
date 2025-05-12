@@ -443,11 +443,19 @@ for (let i = 0; i < roster.length; i++) {
             status = "Scheduled";
         }
         console.log(`>> ${todayDate} | ${tday} | ${roster[i][0]} | ${roster[i][2]} | ${roster[i][3]} | ${status}`);
-        child.innerHTML =`<h2>Dear LM/ALM,</h2><br><br>
-                          <h4>Your Today's Trip</h4>
-                          <Strong>>> ${todayDate} | ${tday.padEnd(11)} | ${roster[i][0].padEnd(11)} | ${roster[i][2].padEnd(12)} | ${roster[i][3].padEnd(12)} | ${status}</Strong>
-                          `
-              parent.appendChild(child)
+        child.innerHTML = `
+                        <h2 class="duty-heading">Dear LM/ALM,</h2>
+                        <h4 class="duty-subheading">Your Today's Trip</h4>
+                        <div class="duty-summary">
+                            <span class="duty-date">📅 ${todayDate}</span> |
+                            <span class="duty-day">🗓️ ${tday}</span> |
+                            <span class="duty-train">🚆 Train No: ${roster[i][0]}</span> |
+                            <span class="duty-from">From: ${roster[i][2]}</span> |
+                            <span class="duty-to">To: ${roster[i][3]}</span> |
+                            <span class="duty-status">${status}</span>
+                        </div>`;
+        parent.appendChild(child);
+
         index = i;
         break;
     }
@@ -486,20 +494,31 @@ for (let j = 0; j < 30; j++) {
     
     const row = document.createElement("div");
     row.className = "duty-row"; // Add class for styling
-    row.innerHTML = `
-      <div class="duty-date">
-        <strong>${dateStr}</strong> | <strong>${dayName}</strong>
-      </div>
-      <p></p>
-      <div class="duty-info">
-        <span><strong>Train No:</strong> ${nextTrain}</span>
-        <span><strong>Status:</strong> ${dayStatus}</span>
-        <span><strong>From:</strong> ${fromStation}</span>
-        <span><strong>To:</strong> ${toStation}</span>
-      </div>
-      `;
-    childTwo.appendChild(row);
 
+    let bgColor = "#f9fafb"; // default
+    if (dayStatus === "Scheduled") {
+      bgColor = "#90ee90"; // light green
+    } else if (dayStatus === "Off Day") {
+      bgColor = "rgb(240, 135, 135)"; // light red
+    } else if (dayStatus === "Rest") {
+      bgColor = "#efce61"; // light yellow
+    }
+
+    row.style.backgroundColor = bgColor;
+
+    row.innerHTML = `
+  <div class="duty-date">
+    <strong>${dateStr}</strong> | <strong>${dayName}</strong>
+  </div>
+  <div class="duty-info">
+    <span><strong>🚆 Train No:</strong> ${nextTrain}</span>
+    <span><strong>📋 Status:</strong> ${dayStatus}</span>
+    <span><strong>📍 From:</strong> ${fromStation}</span>
+    <span><strong>🏁 To:</strong> ${toStation}</span>
+  </div>
+`;
+childTwo.appendChild(row);
+   document.getElementById("display").style.display = "block";
 }
 
 

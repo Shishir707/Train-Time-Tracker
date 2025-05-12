@@ -323,10 +323,9 @@ li {
     margin-bottom: 20px;
     padding: 15px;
     background-color: #ffffff;
-    border: 2px solid #dee2e6;
+    border: 2px solid #bec3c8;
     border-radius: 10px;
 }
-
 .innerStyle h2 {
     margin: 0;
     color: #007bff;
@@ -346,7 +345,6 @@ li {
 }
 
 .duty-row {
-    background: #f9fafb;
     border: 1px solid #9f1e1e;
     border-left: 4px solid #007bff;
     border-right: 4px solid #007bff;
@@ -379,6 +377,56 @@ strong{
 .duty-info span {
     min-width: 150px;
 }
+
+.duty-heading {
+    margin: 0;
+    font-size: 22px;
+    color: #007bff;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.duty-subheading {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #343a40;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.duty-summary {
+    margin-top: 15px;
+    background-color: #f1f3f5;
+    border-left: 4px solid #007bff;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    color: #212529;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.duty-summary span {
+    white-space: nowrap;
+}
+
+/* Optional: Color based on status */
+.status {
+    font-weight: bold;
+}
+
+.status.Scheduled {
+    color: green;
+}
+
+.duty-status.OFF {
+    color: orange;
+}
+
+.duty-status.CANCELLED {
+    color: rgb(244, 125, 125);
+}
+
 
 
 
