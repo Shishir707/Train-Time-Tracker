@@ -28,7 +28,7 @@ header {
 }
 
 header h1 {
-  font-size: 9vw; /* Make font size responsive to viewport width */
+  font-size: 8vw; /* Make font size responsive to viewport width */
   white-space: normal; /* Allow text to wrap as needed */
   overflow: visible; /* Ensure the full text is visible */
 }
