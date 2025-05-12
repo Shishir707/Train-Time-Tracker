@@ -589,10 +589,11 @@ strong{
   border: 1px solid #e0e0e0;
 }
 
-.innerStyle h2 {
+.innerStyle h1 {
   font-size: 22px;
-  color: #1565c0;
+  color: #ffffff;
   margin-bottom: 10px;
+  background-color: rgb(57, 146, 57);
 }
 
 .innerStyle h3 {
@@ -616,7 +617,7 @@ strong{
 
 .innerStyle li {
   background-color: #f5f5f5;
-  border-left: 4px solid #1976d2;
+  border-left: 4px solid #00ff4c;
   padding: 12px 16px;
   margin-bottom: 10px;
   border-radius: 6px;
@@ -629,6 +630,34 @@ strong{
     padding: 20px;
   }
 }
+
+/* Style for Running Days */
+.running-days {
+  background-color: #d4f4dd; /* light green */
+  padding: 10px;
+  border-left: 5px solid #28a745;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+
+.off-days {
+  background-color: #fddede; 
+  padding: 10px;
+  border-left: 5px solid #dc3545;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+/* Style for Duration */
+.total-duration {
+  background-color: #fff9c4; 
+  padding: 10px;
+  border-left: 5px solid #ffc107;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
 
 
 

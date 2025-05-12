@@ -401,25 +401,21 @@ function search() {
 }
 
 
-function search() {
-    const number = document.getElementById("trainNumber").value;
-    const url = `https://bdrail-available-seat-cheiker-server-side.onrender.com/api/train/${number}`;
-
-    fetch(url)
-        .then(res => res.json())
-        .then(data => process(data));
-}
-
 function process(data) {
     const parent = document.getElementById("result");
     parent.textContent = "";
+
+    const allDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const runningDays = data.days;
+    const offDays = allDays.filter(day => !runningDays.includes(day));
+    const offDayDisplay = offDays.length ? offDays.join(", ") : "N/A";
 
     const child = document.createElement("div");
     child.classList.add("innerStyle");
 
     let routeDetails = data.routes.map(route => {
         return `<li>
-          <strong>${route.city}</strong><br>
+          <strong>${route.city.replace(/_/g, " ")}</strong><br>
           Arrival: ${route.arrival_time || "—"}<br>
           Departure: ${route.departure_time || "—"}<br>
           Duration: ${route.duration || "—"}<br>
@@ -428,12 +424,12 @@ function process(data) {
     }).join("");
 
     child.innerHTML = `
-        <h2>🚆 Train Name: ${data.train_name}</h2>
-        <h3>Train Number: ${data.train_model}</h3>
-        <p><strong>Running Days:</strong> ${data.days.join(", ")}</p>
+        <h2>🚆 ${data.train_name}</h2>
+        <p class="running-days"><strong>Running Days:</strong> ${runningDays.join(", ")}</p>
+        <p class="off-days"><strong>Off Days:</strong> ${offDayDisplay}</p>
+        <p class="total-duration"><strong>Total Duration:</strong> ${data.total_duration}</p>
         <h3>Route Information:</h3>
         <ul>${routeDetails}</ul>
-        <p><strong>Total Duration:</strong> ${data.total_duration}</p>
     `;
 
     parent.appendChild(child);
