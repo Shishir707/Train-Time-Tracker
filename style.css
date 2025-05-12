@@ -308,7 +308,58 @@ li {
   font-family: 'Arial', sans-serif;
 }
 
+#display {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
 
+.innerStyle {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+}
+
+.innerStyle h2 {
+    margin: 0;
+    color: #007bff;
+}
+
+.innerStyle h4 {
+    margin: 10px 0;
+    color: #343a40;
+}
+
+.innerStyle strong {
+    display: block;
+    color: #212529;
+    font-family: monospace;
+    white-space: pre;
+    margin-top: 5px;
+}
+
+#display .innerStyle {
+    max-width: 100%;
+    text-align: center;       /* Align content to the left */
+}
+
+#display .innerStyle div {
+    padding: 8px 12px;
+    margin: 4px 0;
+    background-color: #27de3c;
+    border-left: 4px solid #007bff;
+    border-right: 4px solid #007bff;
+    border-radius: 6px;
+    white-space: pre;        /* Respect padEnd() spacing */
+    min-width: max-content;  /* Don't wrap or cut text */
+    text-align: center;        /* Ensure left-aligned text */
+}
 
 
 
