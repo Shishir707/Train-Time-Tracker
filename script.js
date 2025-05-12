@@ -424,10 +424,12 @@ function process(data) {
     }).join("");
 
     child.innerHTML = `
-        <h2>🚆 ${data.train_name}</h2>
+        <h1>🚆 ${data.train_name}</h1>
+        <br>
         <p class="running-days"><strong>Running Days:</strong> ${runningDays.join(", ")}</p>
         <p class="off-days"><strong>Off Days:</strong> ${offDayDisplay}</p>
         <p class="total-duration"><strong>Total Duration:</strong> ${data.total_duration}</p>
+        <br>
         <h3>Route Information:</h3>
         <ul>${routeDetails}</ul>
     `;
