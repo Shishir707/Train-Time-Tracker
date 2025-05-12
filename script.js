@@ -402,50 +402,41 @@ function search() {
 
 
 function search() {
-  const number = document.getElementById("trainNumber").value;
-  const resultDiv = document.getElementById("result");
-  resultDiv.innerHTML = "Loading...";
+    const number = document.getElementById("trainNumber").value;
+    const url = `https://bdrail-available-seat-cheiker-server-side.onrender.com/api/train/${number}`;
 
-  fetch(`https://bdrail-available-seat-cheiker-server-side.onrender.com/api/train/${number}`)
-    .then(res => {
-      if (!res.ok) throw new Error("Train not found");
-      return res.json();
-    })
-    .then(data => {
-      let html = `
-        <h2>${data.train_name}</h2>
-        <p><strong>Train Number:</strong> ${data.train_model}</p>
-        <p><strong>Operates On:</strong> ${data.days.join(", ")}</p>
-        <p><strong>Total Journey Time:</strong> ${data.total_duration}</p>
-        <h3>Route Details:</h3>
-        <table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse: collapse;">
-          <tr>
-            <th>Station</th>
-            <th>Arrival</th>
-            <th>Departure</th>
-            <th>Halt (min)</th>
-            <th>Duration from Previous</th>
-          </tr>
-      `;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => process(data));
+}
 
-      data.routes.forEach(route => {
-        html += `
-          <tr>
-            <td>${route.city.replace(/_/g, " ")}</td>
-            <td>${route.arrival_time ?? "-"}</td>
-            <td>${route.departure_time ?? "-"}</td>
-            <td>${route.halt ?? "-"}</td>
-            <td>${route.duration ?? "-"}</td>
-          </tr>
-        `;
-      });
+function process(data) {
+    const parent = document.getElementById("result");
+    parent.textContent = "";
 
-      html += `</table>`;
-      resultDiv.innerHTML = html;
-    })
-    .catch(err => {
-      resultDiv.innerHTML = `<p style="color:red;">Error: ${err.message}</p>`;
-    });
+    const child = document.createElement("div");
+    child.classList.add("innerStyle");
+
+    let routeDetails = data.routes.map(route => {
+        return `<li>
+          <strong>${route.city}</strong><br>
+          Arrival: ${route.arrival_time || "—"}<br>
+          Departure: ${route.departure_time || "—"}<br>
+          Duration: ${route.duration || "—"}<br>
+          Halt: ${route.halt || "—"} min
+        </li>`;
+    }).join("");
+
+    child.innerHTML = `
+        <h2>🚆 Train Name: ${data.train_name}</h2>
+        <h3>Train Number: ${data.train_model}</h3>
+        <p><strong>Running Days:</strong> ${data.days.join(", ")}</p>
+        <h3>Route Information:</h3>
+        <ul>${routeDetails}</ul>
+        <p><strong>Total Duration:</strong> ${data.total_duration}</p>
+    `;
+
+    parent.appendChild(child);
 }
 
 
