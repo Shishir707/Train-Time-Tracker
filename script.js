@@ -273,6 +273,17 @@ var childThree = document.createElement("div");
 
 // Prompt for today's duty number
 let todaysDuty = document.getElementById("todaysDuty").value.trim()
+if (todaysDuty === "707" || todaysDuty === "708"){
+  todaysDuty = "707/708";
+} else if (todaysDuty === "781" || todaysDuty === "782"){
+  todaysDuty = "781/782";
+} else if (todaysDuty === "737" || todaysDuty === "750"){
+  todaysDuty = "737/750";
+} else if (todaysDuty === "1"){
+  todaysDuty = "1+RT";
+} else if (todaysDuty === "799" || todaysDuty === "800"){
+  todaysDuty = "799/800";
+} 
 if (todaysDuty === "") {
     Swal.fire({
         title: 'Input Required!',
@@ -285,12 +296,11 @@ if (todaysDuty === "") {
 }
 
 Swal.fire({
-  icon: 'info',
-  title: 'Almost Ready!',
-  text: 'Your Train Duty Roster is Nearly Complete.',
+  position: "top-end",
+  icon: "success",
+  title: "Your roster has been successfully generated.",
   showConfirmButton: false,
-  timer: 1000,
-  timerProgressBar: true
+  timer: 1500
 });
 
 
