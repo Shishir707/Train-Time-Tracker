@@ -608,8 +608,36 @@ function toggleDivisionList() {
   divisionList.classList.toggle('hidden');
 }
 
+const buttons = document.querySelectorAll('.preview-button');
+const modal = document.getElementById('modal');
+const modalName = document.getElementById('modal-name');
+const modalLocation = document.getElementById('modal-location');
+const modalLink = document.getElementById('modal-link');
+const closeBtn = document.querySelector('.close');
 
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    const name = button.dataset.name;
+    const location = button.dataset.location;
+    const link = button.dataset.link;
 
+    modalName.textContent = name;
+    modalLocation.textContent = `Location: ${location}`;
+    modalLink.href = link;
+
+    modal.classList.remove('hidden');
+  });
+});
+
+closeBtn.addEventListener('click', () => {
+  modal.classList.add('hidden');
+});
+
+window.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.classList.add('hidden');
+  }
+});
 
 
 
