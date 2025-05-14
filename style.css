@@ -379,11 +379,10 @@ strong{
 
 #viewRoster {
   position: absolute;
-  bottom: 550px;
   left: 3px;
   background-color: #11b43a;
   color: white;
-  padding: 8px 16px;
+  padding: 5px 10px;
   border: none;
   border-radius: 6px;
   font-size: 14px;
@@ -754,6 +753,70 @@ header .container {
 .status-high {
   background-color: #e6ffea;  /* very light green */
   color: #0a5;                /* dark green text */
+}
+
+/* style.css */
+/* Toggle button */
+.view-roster-btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+.view-roster-btn:hover {
+  background: #0056b3;
+}
+
+/* Dropdown hidden by default */
+.roster-list {
+  display: none;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+
+/* When active, flex layout */
+.roster-list.active {
+  display: flex;
+}
+
+/* Heading */
+.roster-list h5 {
+  flex: 0 0 100%;
+  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* Shade buttons */
+.roster-list button {
+  flex: 1 1 calc(33% - 0.5rem);
+  min-width: 120px;
+  padding: 0.4rem 0.6rem;
+  background: #fff;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  color: #007bff;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+.roster-list button:hover {
+  background: #007bff;
+  color: #fff;
+}
+
+/* Responsive: full‑width on small screens */
+@media (max-width: 480px) {
+  .roster-list button {
+    flex: 0 0 100%;
+  }
 }
 
 

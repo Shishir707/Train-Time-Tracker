@@ -41,7 +41,7 @@ setTimeout(() => {
   greetingElement.innerHTML = '';
 }, 5000);
 
-function viewRoster() {
+function daRoster() {
   const htmlContent = `
     <img src="roster.jpeg" alt="Roster" style="width: 100%; height: auto; display: block; margin-bottom: 15px;">
     <p><strong>Note:</strong> Make sure to check all notes below.</p>
@@ -517,6 +517,101 @@ function searchTrain() {
 
   window.location.href = url;
 }
+
+function rosterList() {
+  const dropdown = document.getElementById('rosterDropdown');
+  const button = event.target;
+
+  if (!dropdown) return;
+
+  dropdown.classList.toggle('active');
+  button.textContent = dropdown.classList.contains('active')
+    ? 'View Roster ▲'
+    : 'View Roster ▼';
+}
+
+
+function pbtRoster() {
+  Swal.fire({
+    icon: 'info',
+    title: 'Parbatipur Roster',
+    text: 'This section is currently under maintenance.',
+    confirmButtonText: 'OK'
+  });
+}
+
+function ctgRoster() {
+  Swal.fire({
+    icon: 'info',
+    title: 'Chattogram Roster',
+    text: 'This section is currently under maintenance.',
+    confirmButtonText: 'OK'
+  });
+}
+
+function syltRoster() {
+  Swal.fire({
+    icon: 'info',
+    title: 'Sylhet Roster',
+    text: 'This section is currently under maintenance.',
+    confirmButtonText: 'OK'
+  });
+}
+
+function rajRoster() {
+  Swal.fire({
+    icon: 'info',
+    title: 'Rajshahi Roster',
+    text: 'This section is currently under maintenance.',
+    confirmButtonText: 'OK'
+  });
+}
+
+function isdRoster() {
+  Swal.fire({
+    icon: 'info',
+    title: 'Ishwardi Roster',
+    text: 'This section is currently under maintenance.',
+    confirmButtonText: 'OK'
+  });
+}
+
+function klnRoster() {
+  Swal.fire({
+    icon: 'info',
+    title: 'Khulna Roster',
+    text: 'This section is currently under maintenance.',
+    confirmButtonText: 'OK'
+  });
+}
+
+function lkmRoster() {
+  Swal.fire({
+    icon: 'info',
+    title: 'Laksam Roster',
+    text: 'This section is currently under maintenance.',
+    confirmButtonText: 'OK'
+  });
+}
+
+function lmhRoster() {
+  Swal.fire({
+    icon: 'info',
+    title: 'Lalmonirhat Roster',
+    text: 'This section is currently under maintenance.',
+    confirmButtonText: 'OK'
+  });
+}
+
+function bnprRoster() {
+  Swal.fire({
+    icon: 'info',
+    title: 'Bonarpara Roster',
+    text: 'This section is currently under maintenance.',
+    confirmButtonText: 'OK'
+  });
+}
+
 
 
 

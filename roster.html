@@ -13,7 +13,6 @@
       <h1>🚆 Train Time Tracker</h1>
       <p id="datetime"></p>
     </div>
-    <button id="viewRoster" onclick="viewRoster()">View Roster</button>
   </header>
 
   <div class="hamburger" onclick="toggleSidebar()">☰</div>
@@ -26,6 +25,25 @@
       <li><a href="ticket.html">Purchase Ticket</a></li>
       <li><a href="contact.html">Contact Us</a></li>
     </ul>
+  </div>
+
+    <!-- Toggle button -->
+  <button id="toggleRosterBtn" onclick="rosterList()" class="view-roster-btn">
+    View Roster ▼
+  </button>
+
+ <div id="rosterDropdown" class="roster-list">
+    <h5>Roster:</h5>
+    <button onclick="daRoster()">Dhaka Shade</button>
+    <button onclick="pbtRoster()">Parbatipur Shade</button>
+    <button onclick="ctgRoster()">Chattogram Shade</button>
+    <button onclick="syltRoster()">Sylhet Shade</button>
+    <button onclick="rajRoster()">Rajshahi Shade</button>
+    <button onclick="isdRoster()">Ishwardi Shade</button>
+    <button onclick="klnRoster()">Khulna Shade</button>
+    <button onclick="lkmRoster()">Laksam Shade</button>
+    <button onclick="lmhRoster()">Lalmonirhat Shade</button>
+    <button onclick="bnprRoster()">Bonarpara Shade</button>
   </div>
 
   <main class="container">
