@@ -714,6 +714,20 @@ header .container {
   background-color: #00b34e;
 }
 
+#purchase {
+  text-align: center;
+  margin: 10px auto;
+  max-width: 500px;
+}
+
+#purchase img {
+  max-width: 100%;
+  height: auto;
+  width: 300px;
+  border-radius: 2px;
+}
+
+
 
 
 
