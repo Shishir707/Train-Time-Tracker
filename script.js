@@ -492,18 +492,6 @@ function download() {
   });
 }
 
-<div class="ticket-form">
-  <label for="fromStation">From Station</label>
-  <input type="text" id="fromStation" name="fromStation" placeholder="Enter departure station" required />
-
-  <label for="toStation">To Station</label>
-  <input type="text" id="toStation" name="toStation" placeholder="Enter destination station" required />
-
-  <label for="journeyDate">Enter Date</label>
-  <input type="date" id="journeyDate" name="journeyDate" required />
-
-  <button id="searchTrainBtn">Search Train</button>
-</div>
 
 
 function searchTrain() {
