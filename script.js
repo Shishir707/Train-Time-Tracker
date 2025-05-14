@@ -492,6 +492,46 @@ function download() {
   });
 }
 
+<div class="ticket-form">
+  <label for="fromStation">From Station</label>
+  <input type="text" id="fromStation" name="fromStation" placeholder="Enter departure station" required />
+
+  <label for="toStation">To Station</label>
+  <input type="text" id="toStation" name="toStation" placeholder="Enter destination station" required />
+
+  <label for="journeyDate">Enter Date</label>
+  <input type="date" id="journeyDate" name="journeyDate" required />
+
+  <button id="searchTrainBtn">Search Train</button>
+</div>
+
+
+function searchTrain() {
+  const from = document.getElementById('fromStation').value.trim();
+  const to = document.getElementById('toStation').value.trim();
+  const dateInput = document.getElementById('journeyDate').value;
+
+  if (!from || !to || !dateInput) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Please fill out all fields.',
+    });
+    return;
+  }
+
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const parts = dateInput.split("-");
+  const formattedDate = `${parts[2]}-${months[parseInt(parts[1], 10) - 1]}-${parts[0]}`;
+
+  const url = `https://eticket.railway.gov.bd/booking/train/search?fromcity=${from}&tocity=${to}&doj=${dateInput}&class=S_CHAIR`;
+
+  window.location.href = url;
+}
+
+
+
 
 
 

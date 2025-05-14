@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Purchase Ticket</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="br.png" type="image/png">
+</head>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const dateInput = document.getElementById('journeyDate');
+
+    function formatDate(date) {
+      const yyyy = date.getFullYear();
+      const mm = String(date.getMonth() + 1).padStart(2, '0');
+      const dd = String(date.getDate()).padStart(2, '0');
+      return `${yyyy}-${mm}-${dd}`;
+    }
+
+    const today = new Date();
+    const maxDate = new Date();
+    maxDate.setDate(today.getDate() + 10);
+
+    dateInput.min = formatDate(today);
+    dateInput.max = formatDate(maxDate);
+  });
+
+  function searchTrain() {
+    const from = document.getElementById('fromStation').value.trim();
+    const to = document.getElementById('toStation').value.trim();
+    const dateInput = document.getElementById('journeyDate').value;
+
+    if (!from || !to || !dateInput) {
+      alert('Please fill out all fields.');
+      return;
+    }
+
+    // Convert date format from YYYY-MM-DD to DD-MMM-YYYY (e.g., 2025-05-24 → 24-May-2025)
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const parts = dateInput.split("-");
+    const formattedDate = `${parts[2]}-${months[parseInt(parts[1], 10) - 1]}-${parts[0]}`;
+
+    // Construct the URL with the selected values
+    const url = `https://eticket.railway.gov.bd/booking/train/search?fromcity=${encodeURIComponent(from)}&tocity=${encodeURIComponent(to)}&doj=${formattedDate}&class=S_CHAIR`;
+
+    // Redirect to the generated URL
+    window.location.href = url;
+  }
+</script>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>🚆 Train Time Tracker</h1>
+      <p id="datetime"></p>
+    </div>
+  </header>
+
+  <div class="hamburger" onclick="toggleSidebar()">☰</div>
+
+  <div id="sidebar" class="sidebar">
+    <ul class="sidebar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="roster.html">Roster</a></li>
+      <li><a href="train.html">Train Information</a></li>
+      <li><a href="ticket.html">Purchase Ticket</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </div>
+
+  <div class="ticket">
+    <label for="fromStation">From Station</label>
+    <input type="text" id="fromStation" name="fromStation" placeholder="Enter departure station" required />
+
+    <label for="toStation">To Station</label>
+    <input type="text" id="toStation" name="toStation" placeholder="Enter destination station" required />
+
+    <label for="journeyDate">Enter Date</label>
+    <input type="date" id="journeyDate" name="journeyDate" required />
+
+    <button id="searchTrainBtn" onclick="searchTrain()">Search Train</button>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Train Time Tracker. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
