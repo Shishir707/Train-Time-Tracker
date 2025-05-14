@@ -508,6 +508,16 @@ function searchTrain() {
     return;
   }
 
+  if (from === to) {
+  Swal.fire({
+    icon: 'error',
+    title: 'Invalid Input',
+    text: 'From and To stations cannot be the same.',
+    confirmButtonColor: '#d33'
+  });
+  return; // Stop further processing
+  }
+
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
                   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const parts = dateInput.split("-");
