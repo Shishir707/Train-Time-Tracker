@@ -727,6 +727,36 @@ header .container {
   border-radius: 2px;
 }
 
+/* Base styling for the status box */
+#status {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+/* Light‑red background for Low */
+.status-low {
+  background-color: #ffe5e5;  /* very light red */
+  color: #a00;                /* dark red text */
+}
+
+/* Light‑yellow background for Medium */
+.status-medium {
+  background-color: #fff9e6;  /* very light yellow */
+  color: #aa6500;             /* dark golden text */
+}
+
+/* Light‑green background for High */
+.status-high {
+  background-color: #e6ffea;  /* very light green */
+  color: #0a5;                /* dark green text */
+}
+
+
 
 
 

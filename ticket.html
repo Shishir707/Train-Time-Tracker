@@ -26,7 +26,97 @@
     dateInput.min = formatDate(today);
     dateInput.max = formatDate(maxDate);
   });
-  </script>
+
+document.addEventListener('DOMContentLoaded', () => {
+  const fromInput = document.getElementById('fromStation');
+  const toInput   = document.getElementById('toStation');
+  const dateInput = document.getElementById('journeyDate');
+  const statusEl  = document.getElementById('status');
+
+  const today  = new Date();
+  const maxDay = new Date();
+  maxDay.setDate(today.getDate() + 10);
+  dateInput.min = formatDate(today);
+  dateInput.max = formatDate(maxDay);
+
+  [fromInput, toInput, dateInput].forEach(el =>
+    el.addEventListener('input', updateStatus)
+  );
+  updateStatus();
+
+  function formatDate(d) {
+    const yyyy = d.getFullYear();
+    const mm   = String(d.getMonth() + 1).padStart(2, '0');
+    const dd   = String(d.getDate()).padStart(2, '0');
+    return `${yyyy}-${mm}-${dd}`;
+  }
+
+  function updateStatus() {
+    const fs = fromInput.value.trim().toLowerCase();
+    const ts = toInput.value.trim().toLowerCase();
+    const dv = dateInput.value;
+    if (!fs || !ts || !dv) {
+      statusEl.textContent = '';
+      statusEl.className = '';
+      return;
+    }
+
+    const selDate = new Date(dv);
+    const zeroNow = new Date();
+    zeroNow.setHours(0,0,0,0);
+
+    // Day‑of‑week
+    const dow = selDate.getDay();
+    let statusDay;
+    if ([4,5,6].includes(dow))      statusDay = 'Low';
+    else if (dow === 0)             statusDay = 'Medium';
+    else                            statusDay = 'High';
+
+    //Date offset only today 
+    const diff = Math.floor((selDate - zeroNow) / (1000*60*60*24));
+    let statusDate = null;
+    if (diff === 0) statusDate = 'Low';
+
+    //Station rules
+    const lowFrom = [
+      "cox's bazar","narsingdi","azampur",
+      "brahmanbaria","ashuganj","bhairab_bazar",
+      "mymensingh","jamalpur_town"
+    ];
+    const lowDest = [
+      "cox's bazar","narsingdi","brahmanbaria",
+      "ashuganj","bhairab_bazar","mymensingh",
+      "akhaura","azampur"
+    ];
+    let statusLoc = null;
+    if (lowFrom.includes(fs)) {
+      statusLoc = 'Low';
+    } else if (fs === 'dhaka' && lowDest.includes(ts)) {
+      statusLoc = 'Low';
+    }
+
+    // Merge (Low > Medium > High)
+    const parts = [statusDay, statusDate, statusLoc].filter(Boolean);
+    let finalStatus;
+    if (parts.includes('Low'))        finalStatus = 'Low';
+    else if (parts.includes('Medium')) finalStatus = 'Medium';
+    else                               finalStatus = 'High';
+
+    // Render text
+    statusEl.textContent = `${finalStatus} Probability to get Ticket.
+`;
+
+    //Toggle CSS classes based on status
+    statusEl.className = '';
+    statusEl.classList.add(
+      finalStatus.toLowerCase() === 'low'    ? 'status-low' :
+      finalStatus.toLowerCase() === 'medium' ? 'status-medium' :
+                                              'status-high'
+    );
+  }
+});
+
+</script>
 <body>
   <header>
     <div class="container">
@@ -48,6 +138,9 @@
   </div>
   <div id="purchase">
     <img src="purchase.png" alt="Puchase">
+  </div>
+  <div>
+    <h4 id="status"></h4>
   </div>
 
   <div class="ticket">
