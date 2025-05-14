@@ -549,15 +549,6 @@ function ctgRoster() {
   });
 }
 
-function syltRoster() {
-  Swal.fire({
-    icon: 'info',
-    title: 'Sylhet Roster',
-    text: 'This section is currently under maintenance.',
-    confirmButtonText: 'OK'
-  });
-}
-
 function rajRoster() {
   Swal.fire({
     icon: 'info',
