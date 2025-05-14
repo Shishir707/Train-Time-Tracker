@@ -155,27 +155,117 @@ document.addEventListener('DOMContentLoaded', () => {
   <div>
     <h4 id="status"></h4>
   </div>
-
   <div class="ticket">
-    <label for="fromStation">From Station</label>
-    <input type="text" id="fromStation" name="fromStation" placeholder="Enter departure station" required />
-
-    <label for="toStation">To Station</label>
-    <input type="text" id="toStation" name="toStation" placeholder="Enter destination station" required />
-
-    <label for="journeyDate">Enter Date</label>
-    <input type="date" id="journeyDate" name="journeyDate" required />
-
-    <button id="searchTrainBtn" onclick="searchTrain()">Search Train</button>
+  <label for="fromStation">From Station</label>
+  <div class="autocomplete-container">
+    <input type="text" id="fromStation" placeholder="From station" />
   </div>
+
+  <label for="toStation">To Station</label>
+  <div class="autocomplete-container">
+    <input type="text" id="toStation" placeholder="To station" />
+  </div>
+
+  <label for="journeyDate">Enter Date</label>
+  <input type="date" id="journeyDate" name="journeyDate" required />
+
+  <button id="searchTrainBtn" onclick="searchTrain()">Search Train</button>
+</div>
 
   <footer>
     <div class="container">
       <p>&copy; 2025 Train Time Tracker. All rights reserved.</p>
     </div>
   </footer>
+    <script>
+      const stations = [
+      "Abdulpur", "Aditmari", "Ahsanganj", "Akhanagar", "Akhaura", "Akkelpur",
+      "Alamdanga", "Amirabad", "Amnura", "Amnura_Bypass", "Arani", "Ashuganj",
+      "Atharabari", "Azampur", "Azim Nagar", "Badarganj", "Badherhat", "Badiakhali",
+      "Baharpur", "Bajitpur", "Bajra", "Bamondanga", "Banani", "Baramchal",
+      "Barhatta", "Barkhata", "Baura", "Benapole", "Bhairab_Bazar", "Bhanga",
+      "Bhanga_Junction", "Bhanugach", "Bhatiary", "Bheramara", "Bhomradah", "Bhotmari",
+      "Bhuapur", "Bidyaganj", "Biman_Bandar", "Birampur", "Birol", "Boalmari_Bazar",
+      "Bogura", "Bolakhal", "Bonar_Para", "Boral_Bridge", "Borashi", "Brahmanbaria",
+      "Burimari", "Chakaria", "Chandpur", "Chandpur_Court", "Chandradighalia",
+      "Chapainawabganj", "Chapta", "Chatmohar", "Chattogram", "Chilahati", "Chirirbandar",
+      "Chitoshi_Road", "Choto Bahirbag", "Choumuhani", "Chuadanga", "Chulkati_Bazar",
+      "Coxs Bazar", "Cumilla", "Darshana_Halt", "Dashuria", "Daulatpur", "Dewanganj_Bazar",
+      "Dhaka", "Dhaka_Cantonment", "Dhalarchar", "Dinajpur", "Dohazari", "Domar", "Dublia",
+      "Dulahazara", "Faridpur", "Feni", "Fulbari", "Gachihata", "Gafargaon", "Gaibandha", 
+      "Gobra", "GOMDANDI", "Gopalganj", "Gouripur_Myn", "Gunabati", "Hajiganj", "Haldibari",
+      "Harashpur", "HARBANG", "Hasanpur", "Hatibandha", "Hemnagar", "Hi-Tech City", "Hili",
+      "Ibrahimabad", "Ishwardi", "Ishwardi Bypass", "ISLAMABAD", "Islampur_Bazar",
+      "Jaforshahi", "Jagannathgonj_Bazar", "Jamalpur_Town", "Jamtail", "Janali_Hat", "Jashore",
+      "Jhikargacha", "Joydebpur", "Joypurhat", "Kakonhat", "Kalukhali", "Kanchan_Junction",
+      "Kankina", "Kaoraid", "Kashiani", "Kashinathpur", "Katakhali", "Kaunia", "Kawgaon",
+      "Kendua_Bazar", "Khoksha", "Kholahati", "Khulna", "Kishorganj", "Kismat", "Kolkata",
+      "Kotchandpur", "Kulaura", "Kuliarchar", "Kumarkhali", "Kumira", "Kurigram", 
+      "Kushtia_Court", "Laksam", "Lalmonirhat", "LOHAGARA", "Lohagora", "Lokmanpur",
+      "Lolitnagar", "Madhnagar", "Madhukhali", "Mahendranagar", "Mahimaganj", 
+      "Maijdi Court", "Maijgaon", "Majhgram", "Manikkhali", "Manmathapur", "Mawa", "Meher",
+      "Melandah_Bazar", "Methikanda", "Mirbagh", "Mirpur", "Mirzapur", "Modhu_Road",
+      "Mohammad Nagar", "Mohanganj", "Mongalpur", "Mongla", "Montola", "Mubarakganj",
+      "Mukundapur", "Muladhuli", "Mymensingh", "Nachole", "Naliagram", "Nandina", "Nangolkot",
+      "Narail", "Narayanganj", "Narsingdi", "Narundi", "Natherpetua", "Natore", "Nayaniburuj",
+      "Nayapara", "Netrakona", "New Jalpaiguri", "Nilphamari", "Noakhali", "Noapara", "Pabna",
+      "Pachuria", "Padma", "Padmabila", "Pahartali", "Paksey", "Panchagarh", "Panchbibi",
+      "Pangsha", "Parbatipur", "Patgram", "Patiya", "Phultala", "Pirgacha", "Pirganj",
+      "Piyarpur", "Poradaha", "Pukuria", "Quasba", "Raghabpur", "Rajbari", "Rajshahi",
+      "Rajshahi_Court", "Ramu", "Rangpur", "Rohanpur", "Ruhia", "SH M Monsur Ali", "Safdarpur",
+      "Saidpur", "Santahar", "Sararchar", "Sardah_Road", "Sarishabari", "Sathia_Rajapur",
+      "Satkania", "Setabganj", "Shahaji_Bazar", "Shahrasti", "Shahtali", "Shaistaganj",
+      "Shamshernagar", "Shashidal", "Shibchar", "Shibganj", "Sholoshohor", "Shyamgonj",
+      "Shyampur", "Singia", "Sirajganj_Bazar", "Sirajganjraipur", "Sitlai", "Sonaimuri",
+      "Sonatola", "SOYDABAD", "Sreemangal", "Sreepur", "Sultanpur", "Sylhet", "Talma",
+      "Talora", "Tangail", "Tantibandha", "Tarakandi", "Tebunia", "Teesta_Junction",
+      "Thakrokona", "Thakurgaon_Road", "Tongi", "Tushbhandar", "Ullapara"
+    ];
 
-  <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    function setupAutocomplete(input) {
+      input.addEventListener('input', () => {
+        const listId = input.id + '-list';
+        let oldList = document.getElementById(listId);
+        if (oldList) oldList.remove();
+
+        const list = document.createElement('ul');
+        list.id = listId;
+        list.className = 'autocomplete-list';
+
+        const value = input.value.toLowerCase();
+        if (!value) return;
+
+        const matches = stations.filter(station =>
+          station.toLowerCase().includes(value)
+        ).slice(0, 8); // limit to 8 results
+
+        matches.forEach(match => {
+          const item = document.createElement('li');
+          item.textContent = match;
+          item.onclick = () => {
+            input.value = match;
+            list.remove();
+            input.dispatchEvent(new Event('input'));
+          };
+          list.appendChild(item);
+        });
+
+        if (matches.length) input.parentNode.appendChild(list);
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!input.contains(e.target)) {
+          const list = document.getElementById(input.id + '-list');
+          if (list) list.remove();
+        }
+      });
+    }
+
+    setupAutocomplete(document.getElementById('fromStation'));
+    setupAutocomplete(document.getElementById('toStation'));
+ </script>
+
+ <script src="script.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
