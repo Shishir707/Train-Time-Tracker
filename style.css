@@ -906,9 +906,10 @@ header .container {
   margin: auto;
   padding: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
   gap: 15px;
 }
+
 
 /* Facebook profile button */
 .fb-button {
