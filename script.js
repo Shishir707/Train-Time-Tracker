@@ -603,6 +603,11 @@ function bnprRoster() {
   });
 }
 
+function toggleDivisionList() {
+  const divisionList = document.getElementById('divisionList');
+  divisionList.classList.toggle('hidden');
+}
+
 
 
 
