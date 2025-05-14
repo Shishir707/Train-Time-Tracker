@@ -513,7 +513,7 @@ function searchTrain() {
   const parts = dateInput.split("-");
   const formattedDate = `${parts[2]}-${months[parseInt(parts[1], 10) - 1]}-${parts[0]}`;
 
-  const url = `https://eticket.railway.gov.bd/booking/train/search?fromcity=${from}&tocity=${to}&doj=${dateInput}&class=S_CHAIR`;
+  const url = `https://eticket.railway.gov.bd/booking/train/search?fromcity=${from}&tocity=${to}&doj=${formattedDate}&class=S_CHAIR`;
 
   window.location.href = url;
 }
