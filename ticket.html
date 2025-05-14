@@ -26,30 +26,7 @@
     dateInput.min = formatDate(today);
     dateInput.max = formatDate(maxDate);
   });
-
-  function searchTrain() {
-    const from = document.getElementById('fromStation').value.trim();
-    const to = document.getElementById('toStation').value.trim();
-    const dateInput = document.getElementById('journeyDate').value;
-
-    if (!from || !to || !dateInput) {
-      alert('Please fill out all fields.');
-      return;
-    }
-
-    // Convert date format from YYYY-MM-DD to DD-MMM-YYYY (e.g., 2025-05-24 → 24-May-2025)
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    const parts = dateInput.split("-");
-    const formattedDate = `${parts[2]}-${months[parseInt(parts[1], 10) - 1]}-${parts[0]}`;
-
-    // Construct the URL with the selected values
-    const url = `https://eticket.railway.gov.bd/booking/train/search?fromcity=${encodeURIComponent(from)}&tocity=${encodeURIComponent(to)}&doj=${formattedDate}&class=S_CHAIR`;
-
-    // Redirect to the generated URL
-    window.location.href = url;
-  }
-</script>
-
+  </script>
 <body>
   <header>
     <div class="container">
