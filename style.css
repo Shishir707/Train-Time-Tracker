@@ -902,13 +902,14 @@ header .container {
 
 /* Facebook button container */
 #body {
-  max-width: 960px;
+  max-width: 600px;
   margin: auto;
   padding: 20px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+  grid-template-columns: 1fr; /* Only one column */
   gap: 15px;
 }
+
 
 
 /* Facebook profile button */
