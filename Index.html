@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Train Time Tracker</title>
+  <title>RailNet Bangladesh</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="br.png" type="image/png">
 </head>
 <body>
   <header>
     <div class="container">
-      <h1>🚆 Train Time Tracker</h1>
+      <h1>🚆 RailNet Bangladesh</h1>
       <p id="datetime"></p>
     </div>
   </header>
@@ -24,48 +24,105 @@
       <li><a href="train.html">Train Information</a></li>
       <li><a href="ticket.html">Purchase Ticket</a></li>
       <li>
-          <button class="dropdown-btn" onclick="toggleDivisionList()">Railfans ▼</button>
-          <ul id="divisionList" class="dropdown hidden">
-            <li><a href="dhaka.html"><button>Dhaka</button></a></li>
-            <li><a href="sylhet.html"><button>Sylhet</button></a></li>
-            <li><a href="khulna.html"><button>Khulna</button></a></li>
-            <li><a href="rangpur.html"><button>Rangpur</button></a></li>
-            <li><a href="rajshahi.html"><button>Rajshahi</button></a></li>
-            <li><a href="barishal.html"><button>Barishal</button></a></li>
-            <li><a href="mymensingh.html"><button>Mymensingh</button></a></li>
-            <li><a href="chattogram.html"><button>Chattogram</button></a></li>
-          </ul>
+        <button class="dropdown-btn" onclick="toggleDivisionList()">Railfans ▼</button>
+        <ul id="divisionList" class="dropdown hidden">
+          <li><a href="dhaka.html"><button>Dhaka</button></a></li>
+          <li><a href="sylhet.html"><button>Sylhet</button></a></li>
+          <li><a href="khulna.html"><button>Khulna</button></a></li>
+          <li><a href="rangpur.html"><button>Rangpur</button></a></li>
+          <li><a href="rajshahi.html"><button>Rajshahi</button></a></li>
+          <li><a href="barishal.html"><button>Barishal</button></a></li>
+          <li><a href="mymensingh.html"><button>Mymensingh</button></a></li>
+          <li><a href="chattogram.html"><button>Chattogram</button></a></li>
+        </ul>
       </li>
       <li><a href="maintain.html">Coach & Seat Plan</a></li>
       <li>
-      <button class="dropdown-btn" onclick="toggleLostFoundList()">Lost & Found ▼</button>
-      <ul id="lostFoundList" class="dropdown hidden">
-        <li><a href="maintain.html">Lost</a></li>
-        <li><a href="maintain.html">Found</a></li>
-      </ul>
+        <button class="dropdown-btn" onclick="toggleLostFoundList()">Lost & Found ▼</button>
+        <ul id="lostFoundList" class="dropdown hidden">
+          <li><a href="maintain.html">Lost</a></li>
+          <li><a href="maintain.html">Found</a></li>
+        </ul>
       </li>
       <li><a href="contact.html">Contact Us</a></li>
     </ul>
   </div>
-
-
+  <div id="greeting"></div>
   <main class="container">
-    <div id="greeting"></div>
-    <h2>Welcome to Train Time Tracker</h2>
-    <p>Your one-stop solution for smart duty planning and real-time train scheduling.</p>
-    <br>
-    <br><br><br>
-    <div id="displayArea"></div>
-    <br><br>
-    <img src="train.jpg" alt="Train">
+    <section class="hero">
+      <h1>Connecting Bangladesh Through Smart Rail Solutions</h1>
+      <p>Track schedules, manage rosters, and explore train services — all in one place.</p>
+      <a href="roster.html" class="cta-button">View Roster</a>
+    </section>
+
+    <section class="features">
+      <h2>Key Features</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>📅 30-Day Duty Schedule</h3>
+          <p>Plan and view duty rosters for Dhaka shed staff with smart logic.</p>
+        </div>
+        <div class="feature">
+          <h3>🚉 Real-Time Train Info</h3>
+          <p>Access live train schedules, source-destination, and off-day data.</p>
+        </div>
+        <div class="feature">
+          <h3>🎫 Ticket Purchase</h3>
+          <p>Navigate to our integrated ticket purchase tool.</p>
+        </div>
+        <div class="feature">
+          <h3>🧳 Lost & Found</h3>
+          <p>Report or retrieve lost items from station authorities.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery">
+  <h2>The Latest Hypes in Bangladesh Railway</h2>
+  <div class="gallery-row">
+    <div>
+      <img src="JamunaRail.png" alt="Train Interior" />
+      <div class="gallery-caption">Jamuna Rail Bridge</div>
+    </div>
+    <div>
+      <img src="padma.png" alt="Station" />
+      <div class="gallery-caption">Padma Bridge</div>
+    </div>
+    <div>
+      <img src="lhb.png" alt="Train on Bridge" />
+      <div class="gallery-caption">Upcoming Hypes(LHB Coach)</div>
+    </div>
+  </div>
+</section>
+
+
+    <section class="testimonials">
+      <h2>What People Say</h2>
+      <blockquote>
+        “This system makes our train duty management 10x easier.” – Passengers,Staff & Railfans
+      </blockquote>
+    </section>
+
+    <section class="news">
+      <h2>Latest Updates</h2>
+      <ul>
+        <li>🟢 New duty schedule logic implemented (May 2025)</li>
+        <li>🚄 Added all railfan in one place</li>
+        <li>🎫 Improved lost and found under development</li>
+      </ul>
+    </section>
   </main>
-  
+
   <footer>
     <div class="container">
       <p>&copy; 2025 Train Time Tracker. All rights reserved.</p>
+      <p>
+        <a href="privacy.html">Privacy Policy</a> | 
+        <a href="terms.html">Terms of Use</a>
+      </p>
     </div>
   </footer>
-  <script src="script.js"></script>
 
+  <script src="script.js"></script>
 </body>
 </html>

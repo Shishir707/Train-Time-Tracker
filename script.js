@@ -48,11 +48,13 @@ else {
 }
 
 greetingElement.innerHTML=`<h2> ${greetingText} </h2>
-                          <p>Added helpline number</P>
+                          <p>Updated Home Page</P>
                           <h4>Your app is up to date</h4>`;
 setTimeout(() => {
   greetingElement.innerHTML = '';
+  greetingElement.style.display = 'none';
 }, 5000);
+
 
 function daRoster() {
   const htmlContent = `
