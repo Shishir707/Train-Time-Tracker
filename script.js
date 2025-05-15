@@ -64,7 +64,7 @@ else {
 }
 
 greetingElement.innerHTML=`<h2> ${greetingText} </h2>
-                          <p>Updated Home Page</P>
+                          <p>Added Catering Menu</P>
                           <h4>Your app is up to date</h4>`;
 setTimeout(() => {
   greetingElement.innerHTML = '';
