@@ -13,26 +13,21 @@ function toggleLostFoundList() {
   list.classList.toggle("hidden");
 }
 
-let deferredPrompt;
-const installBtn = document.getElementById('installBtn');
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  installBtn.style.display = 'inline-block';
-});
-
-installBtn.addEventListener('click', () => {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(choice => {
-      if (choice.outcome === 'accepted') {
-        console.log('App installed');
-      }
-      deferredPrompt = null;
-    });
-  }
-});
+function install(){
+  Swal.fire({
+    icon: 'info',
+    title: 'Add to Home Screen',
+    html: `
+      <p>To install this app on your phone:</p>
+      <ol style="text-align:left; margin-left: 1.2em;">
+        <li>Tap the browser menu (⋮ or Share icon)</li>
+        <li>Select <strong>"Add to Home screen"</strong></li>
+      </ol>
+      <p>This will let you open the app quickly from your home screen.</p>
+    `,
+    confirmButtonText: 'Got it!',
+  });
+}
 
 
 
