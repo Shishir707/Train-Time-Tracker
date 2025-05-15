@@ -782,6 +782,24 @@ function dwbRoster() {
   });
 }
 
+function akaRoster() {
+  Swal.fire({
+    icon: 'info',
+    title: 'Akhaura Roster',
+    text: 'This section is currently under maintenance.',
+    confirmButtonText: 'OK'
+  });
+}
+
+function krfRoster() {
+  Swal.fire({
+    icon: 'info',
+    title: 'Kulaura Roster',
+    text: 'This section is currently under maintenance.',
+    confirmButtonText: 'OK'
+  });
+}
+
 function kwtRoster() {
   Swal.fire({
     icon: 'info',
