@@ -16,7 +16,7 @@ function toggleLostFoundList() {
 function install(){
   Swal.fire({
     icon: 'info',
-    title: 'Add to Home Screen',
+    title: 'To Install App',
     html: `
       <p>To install this app on your phone:</p>
       <ol style="text-align:left; margin-left: 1.2em;">
