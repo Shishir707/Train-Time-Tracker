@@ -1086,6 +1086,18 @@ select {
   background-color: #eef4ff;
 }
  
+#installBtn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#installBtn:hover {
+  background-color: #0056b3;
+}
 
 
 
