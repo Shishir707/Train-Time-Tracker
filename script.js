@@ -48,7 +48,8 @@ else {
 }
 
 greetingElement.innerHTML=`<h2> ${greetingText} </h2>
-                          <p>Update: Added Lost and Found Menu</P>`;
+                          <p>Added Lost and Found Menu</P>
+                          <h4>Your app is up to date</h4>`;
 setTimeout(() => {
   greetingElement.innerHTML = '';
 }, 5000);
