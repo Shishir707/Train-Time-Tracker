@@ -48,7 +48,7 @@
   </button>
 
  <div id="rosterDropdown" class="roster-list">
-    <h5>Select Shade:</h5>
+    <h5>Select Shed:</h5>
     <button onclick="daRoster()">Dhaka</button>
     <button onclick="pbtRoster()">Parbatipur</button>
     <button onclick="ctgRoster()">Chattogram</button>
@@ -66,6 +66,22 @@
     <h2>Track Your Train Duties</h2>
     <p>Plan and manage your upcoming 30 days schedule with ease and view your offdays.</p>
     <br><br>
+      <div class="combo-container">
+    <label for="shade-select">Select Your Shed:</label>
+    <select id="shade-select" name="shade">
+      <option value="">--Please choose--</option>
+      <option value="Dhaka">Dhaka</option>
+      <option value="Parbatipur">Parbatipur</option>
+      <option value="Chattogram">Chattogram</option>
+      <option value="Rajshahi">Rajshahi</option>
+      <option value="Ishwardi">Ishwardi</option>
+      <option value="Khulna">Khulna</option>
+      <option value="Laksam">Laksam</option>
+      <option value="Lalmonirhat">Lalmonirhat</option>
+      <option value="Bonarpara">Bonarpara</option>
+      <option value="Rajbari">Rajbari</option>
+    </select>
+  </div>
     <label for="todaysDuty">Enter Your Today's Duty Train Number:</label>
     <input type="number" id="todaysDuty" name="todaysDuty" required placeholder="e.g. 722">
     <br><br>
