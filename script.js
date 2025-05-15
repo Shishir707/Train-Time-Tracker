@@ -400,7 +400,7 @@ function createRoster(){
   }
   }
 
-  else if (shed === "Pahartoli"){
+  else if (shed === "Pahartoli"){                                                   // Cth start From here
     const parent = document.getElementById("display");
     parent.textContent = "";
 
@@ -409,7 +409,24 @@ function createRoster(){
     const childTwo = document.createElement("div");
     childTwo.classList.add("innerStyle");
 
-    const todaysDuty = document.getElementById("todaysDuty").value.trim();
+    let todaysDuty = document.getElementById("todaysDuty").value.trim();
+    
+    if (todaysDuty === "816" || todaysDuty === "815") {
+        todaysDuty = "816/815";
+    }
+    else if (todaysDuty === "814" || todaysDuty === "813") {
+        todaysDuty = "814/813";
+    }
+
+    else if (todaysDuty === "221" || todaysDuty === "222") {
+        todaysDuty = "221/222";
+    }
+
+    else if (todaysDuty === "786") {
+        todaysDuty = "786+RT";
+    }
+
+
 
     if (todaysDuty === "") {
       Swal.fire({
@@ -751,6 +768,24 @@ function klnRoster() {
   Swal.fire({
     icon: 'info',
     title: 'Khulna Roster',
+    text: 'This section is currently under maintenance.',
+    confirmButtonText: 'OK'
+  });
+}
+
+function dwbRoster() {
+  Swal.fire({
+    icon: 'info',
+    title: 'Dewanganj Roster',
+    text: 'This section is currently under maintenance.',
+    confirmButtonText: 'OK'
+  });
+}
+
+function kwtRoster() {
+  Swal.fire({
+    icon: 'info',
+    title: 'Kewatkhali Roster',
     text: 'This section is currently under maintenance.',
     confirmButtonText: 'OK'
   });
