@@ -147,7 +147,13 @@ document.addEventListener('DOMContentLoaded', () => {
           </ul>
       </li>
       <li><a href="maintain.html">Coach & Seat Plan</a></li>
-      <li><a href="maintain.html">Lost & Found</a></li>
+      <li>
+      <button class="dropdown-btn" onclick="toggleLostFoundList()">Lost & Found ▼</button>
+      <ul id="lostFoundList" class="dropdown hidden">
+        <li><a href="maintain.html">Lost</a></li>
+        <li><a href="maintain.html">Found</a></li>
+      </ul>
+      </li>
       <li><a href="contact.html">Contact Us</a></li>
     </ul>
   </div>

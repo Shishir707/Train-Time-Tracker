@@ -18,28 +18,37 @@
   <div class="hamburger" onclick="toggleSidebar()">☰</div>
 
   <div id="sidebar" class="sidebar">
-    <ul class="sidebar-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="roster.html">Roster</a></li>
-      <li><a href="train.html">Train Information</a></li>
-      <li><a href="ticket.html">Purchase Ticket</a></li>
-            <li>
-          <button class="dropdown-btn" onclick="toggleDivisionList()">Railfans ▼</button>
-          <ul id="divisionList" class="dropdown hidden">
-            <li><a href="dhaka.html"><button>Dhaka</button></a></li>
-            <li><a href="sylhet.html"><button>Sylhet</button></a></li>
-            <li><a href="khulna.html"><button>Khulna</button></a></li>
-            <li><a href="rangpur.html"><button>Rangpur</button></a></li>
-            <li><a href="rajshahi.html"><button>Rajshahi</button></a></li>
-            <li><a href="barishal.html"><button>Barishal</button></a></li>
-            <li><a href="mymensingh.html"><button>Mymensingh</button></a></li>
-            <li><a href="chattogram.html"><button>Chattogram</button></a></li>
-          </ul>
-      </li>
-      <li><a href="maintain.html">Coach & Seat Plan</a></li>
-      <li><a href="maintain.html">Lost & Found</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
+  <ul class="sidebar-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="roster.html">Roster</a></li>
+    <li><a href="train.html">Train Information</a></li>
+    <li><a href="ticket.html">Purchase Ticket</a></li>
+    <li>
+      <button class="dropdown-btn" onclick="toggleDivisionList()">Railfans ▼</button>
+      <ul id="divisionList" class="dropdown hidden">
+        <li><a href="dhaka.html"><button>Dhaka</button></a></li>
+        <li><a href="sylhet.html"><button>Sylhet</button></a></li>
+        <li><a href="khulna.html"><button>Khulna</button></a></li>
+        <li><a href="rangpur.html"><button>Rangpur</button></a></li>
+        <li><a href="rajshahi.html"><button>Rajshahi</button></a></li>
+        <li><a href="barishal.html"><button>Barishal</button></a></li>
+        <li><a href="mymensingh.html"><button>Mymensingh</button></a></li>
+        <li><a href="chattogram.html"><button>Chattogram</button></a></li>
+      </ul>
+    </li>
+    <li><a href="maintain.html">Coach & Seat Plan</a></li>
+
+    <!-- Lost & Found Toggle Section -->
+    <li>
+    <button class="dropdown-btn" onclick="toggleLostFoundList()">Lost & Found ▼</button>
+    <ul id="lostFoundList" class="dropdown hidden">
+      <li><a href="maintain.html">Lost</a></li>
+      <li><a href="maintain.html">Found</a></li>
     </ul>
+    </li>
+
+    <li><a href="contact.html">Contact Us</a></li>
+  </ul>
   </div>
 
     <!-- Toggle button -->

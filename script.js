@@ -3,6 +3,17 @@ function toggleSidebar() {
   sidebar.classList.toggle('show');
 }
 
+function toggleDivDivisionList() {
+  const list = document.getElementById("divDivisionList");
+  list.classList.toggle("division hidden");
+}
+
+function toggleLostFoundList() {
+  const list = document.getElementById("lostFoundList");
+  list.classList.toggle("hidden");
+}
+
+
 
 const dateElement = document.getElementById("datetime");
   const now = new Date();
