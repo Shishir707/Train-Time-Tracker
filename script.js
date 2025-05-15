@@ -85,9 +85,8 @@ function daRoster() {
 
 
 function createRoster(){
-  const shade = document.getElementById("shade-select").value;
-  if (shade === "Dhaka"){
-    console.log(shade)
+  const shed = document.getElementById("shade-select").value;
+  if (shed === "Dhaka"){
     const roster = [["709","Saturday","Dhaka","Sylhet","Monday"],
             ["740","Sunday","Sylhet","Dhaka","Monday"],
             ["781/782","Monday","Dhaka","Kishorganj","Tuesday"],
@@ -320,7 +319,6 @@ function createRoster(){
           } else {
               status = "Scheduled";
           }
-          console.log(`>> ${todayDate} | ${tday} | ${roster[i][0]} | ${roster[i][2]} | ${roster[i][3]} | ${status}`);
           child.innerHTML = `
                           <h2 class="duty-heading">Dear LM/ALM,</h2>
                           <h4 class="duty-subheading">Your Today's Trip</h4>
@@ -401,7 +399,174 @@ function createRoster(){
     document.getElementById("displayArea").innerHTML = null;
   }
   }
+
+  else if (shed === "Pahartoli"){
+    const parent = document.getElementById("display");
+    parent.textContent = "";
+
+    const child = document.createElement("div");
+    child.classList.add("innerStyle");
+    const childTwo = document.createElement("div");
+    childTwo.classList.add("innerStyle");
+
+    const todaysDuty = document.getElementById("todaysDuty").value.trim();
+
+    if (todaysDuty === "") {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Input Required',
+        text: "Please enter today's duty number before proceeding.",
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#007bff',
+      });
+      return;
+    }
+
+    const roster = [
+      ["703", null, "Chattogram", "Dhaka", null],
+      ["742", null, "Dhaka", "Chattogram", null],
+      ["N/A", null, "N/A", "N/A", "Rest"],
+      ["1", null, "Chattogram", "Akhaura", null],
+      ["38", null, "Akhaura", "Chattogram", null],
+      ["813", null, "Chattogram", "Dhaka", "Tuesday"],
+      ["788", null, "Dhaka", "Chattogram", "Wednesday"],
+      ["723", null, "Chattogram", "Akhaura", "Wednesday"],
+      ["720", null, "Akhaura", "Chattogram", "Wednesday"],
+      ["SE", null, "N/A", "N/A", null],
+      ["719", null, "Chattogram", "Akhaura", "Monday"],
+      ["724", null, "Akhaura", "Chattogram", "Sunday"],
+      ["814/813", null, "Chattogram", "Cox's Bazar", "Tuesday"],
+      ["721", null, "Chattogram", "Dhaka", "Sunday"],
+      ["814", null, "Dhaka", "Chattogram", "Monday"],
+      ["N/A", null, "N/A", "N/A", "Rest"],
+      ["785", null, "Chattogram", "Akhaura", "Tuesday"],
+      ["786+RT", null, "Akhaura", "Chattogram", "Tuesday"],
+      ["741", null, "Chattogram", "Dhaka", null],
+      ["702", null, "Dhaka", "Chattogram", "Monday"],
+      ["221/222", null, "Dhaka", "Najirhat", null],
+      ["816/815", null, "Chattogram", "Cox's Bazar", "Wednesday"]
+    ];
+
+    const today = new Date();
+    const todayDate = today.toLocaleDateString('en-GB');
+    const tday = today.toLocaleDateString('en-US', { weekday: 'long' });
+
+    let index = -1;
+    for (let i = 0; i < roster.length; i++) {
+      if (roster[i][0] === todaysDuty) {
+        index = i;
+        break;
+      }
+    }
+
+    if (index === -1) {
+      Swal.fire({
+        icon: "error",
+        title: "Sorry!",
+        html: "📌 Note: This train is not operated by the Pahartoli Shed.<strong> Change Shed </strong>."
+      });
+      return;
+    }
+
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Your roster has been successfully generated.",
+      showConfirmButton: false,
+      timer: 1500
+    });
+
+    const todayDuty = roster[index];
+    let status;
+    if (todayDuty[4] === tday) {
+      status = "Today is Your OffDay";
+    } else if (todayDuty[4] === "Rest") {
+      status = "Today is Your Offday";
+    } else {
+      status = "Scheduled";
+    }
+
+    child.innerHTML = `<h2 class="duty-heading">Dear LM/ALM,</h2>
+                      <h4 class="duty-subheading">Your Today's Trip</h4>
+                      <div class="duty-summary">
+                          <span class="duty-date">📅 ${todayDate}</span> |
+                          <span class="duty-day">🗓️ ${tday}</span> |
+                          <span class="duty-train">🚆 Train No: ${todayDuty[0]}</span> |
+                          <span class="duty-from">From: ${todayDuty[2]}</span> |
+                          <span class="duty-to">To: ${todayDuty[3]}</span> |
+                          <span class="duty-status">${status}</span>
+                      </div>`;
+    parent.appendChild(child);
+
+    childTwo.innerHTML = `<h4>Your Next 30 Days Schedule</h4>
+                          <p>-------------------------------------------------------</p>`;
+    parent.appendChild(childTwo);
+
+    for (let j = 0; j < 30; j++) {
+      const futureDate = new Date();
+      futureDate.setDate(today.getDate() + j + 1);
+
+      const dateStr = futureDate.toLocaleDateString('en-GB');
+      const dayName = futureDate.toLocaleDateString('en-US', { weekday: 'long' });
+
+      const rosterIndex = (index + j + 1) % roster.length;
+      const duty = roster[rosterIndex];
+
+      const train_no = duty[0];
+      const from_station = duty[2];
+      const to_station = duty[3];
+      const off_day = duty[4];
+
+      let dayStatus = "Scheduled";
+      if (off_day === "Rest") {
+        dayStatus = "Rest";
+      } else if (off_day === dayName) {
+        dayStatus = "Off Day";
+      }
+
+      const row = document.createElement("div");
+      row.className = "duty-row";
+
+      let bgColor = "#f9fafb";
+      if (dayStatus === "Scheduled") {
+        bgColor = "#90ee90";
+      } else if (dayStatus === "Off Day") {
+        bgColor = "rgb(240, 135, 135)";
+      } else if (dayStatus === "Rest") {
+        bgColor = "#efce61";
+      }
+
+      row.style.backgroundColor = bgColor;
+
+      row.innerHTML = `<div class="duty-date">
+                        <strong>${dateStr}</strong> | <strong>${dayName}</strong>
+                      </div>
+                      <div class="duty-info">
+                        <span><strong>🚆 Train No:</strong> ${train_no}</span>
+                        <span><strong>📋 Status:</strong> ${dayStatus}</span>
+                        <span><strong>📍 From:</strong> ${from_station}</span>
+                        <span><strong>🏁 To:</strong> ${to_station}</span>
+                      </div>`;
+      childTwo.appendChild(row);
+
+      console.log(`>> | ${dayName.padEnd(11)} | ${train_no.padEnd(11)} | ${from_station.padEnd(12)} | ${to_station.padEnd(12)} | ${dayStatus}`);
+    }
+
+    document.getElementById("display").style.display = "block";
+    document.getElementById("todaysDuty").value = "";
+    document.getElementById("displayArea").innerHTML = null;
+  }
+
+  
 }
+
+
+
+
+
+    
+
+
 
 function search() {
     const number = document.getElementById("trainNumber").value;
@@ -433,7 +598,6 @@ function search() {
         });
         resultDiv.innerHTML = "";
     });
-
 }
 
 
@@ -553,7 +717,7 @@ function pbtRoster() {
   });
 }
 
-function ctgRoster() {
+function phrRoster() {
   Swal.fire({
     imageUrl: 'ctgRoster.png',
     imageAlt: 'Chattogram Roster',
