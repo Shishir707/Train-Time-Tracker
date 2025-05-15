@@ -74,7 +74,7 @@ setTimeout(() => {
 
 function daRoster() {
   const htmlContent = `
-    <img src="roster.jpeg" alt="Roster" style="width: 100%; height: auto; display: block; margin-bottom: 15px;">
+    <img src="gallery/roster.jpeg" alt="Roster" style="width: 100%; height: auto; display: block; margin-bottom: 15px;">
     <p><strong>Note:</strong> Make sure to check all notes below.</p>
     <div style="text-align: left; font-size: 14px;">
       <h4>From Dhaka</h4>
@@ -767,7 +767,7 @@ function pbtRoster() {
 
 function phrRoster() {
   Swal.fire({
-    imageUrl: 'ctgRoster.png',
+    imageUrl: 'gallery/ctgRoster.png',
     imageAlt: 'Chattogram Roster',
     imageWidth: 1000,  // adjust as needed
     imageHeight: 'auto',
