@@ -21,19 +21,19 @@ const greetingElement = document.getElementById('greeting');
 let greetingText = "";
 
 if (currentHour < 12) {
-  greetingText = 'Good Morning! LM/ALM';
+  greetingText = '🙋‍♂️Hi,Good Morning!';
 } 
 else if (currentHour >= 12 && currentHour < 13) {
-  greetingText = 'Good Noon! LM/ALM';
+  greetingText = '🙋‍♂️Hi,Good Noon!';
 } 
 else if (currentHour >= 13 && currentHour < 16) {
-  greetingText = 'Good Afternoon! LM/ALM';
+  greetingText = '🙋‍♂️Hi,Good Afternoon!';
 } 
 else if (currentHour >= 16 && currentHour < 20) {
-  greetingText = 'Good Evening! LM/ALM';
+  greetingText = '🙋‍♂️Hi,Good Evening!';
 } 
 else {
-  greetingText = 'Good Night! LM/ALM';
+  greetingText = '🙋‍♂️Hi,Good Night!';
 }
 
 greetingElement.innerHTML=`<h2> ${greetingText} </h2>`;
