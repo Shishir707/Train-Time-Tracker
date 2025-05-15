@@ -30,7 +30,7 @@ const dateElement = document.getElementById("datetime");
   const currentHour = now.getHours();
 const greetingElement = document.getElementById('greeting');
 let greetingText = "";
-
+let update = "";
 if (currentHour < 12) {
   greetingText = '🙋‍♂️Hi,Good Morning!';
 } 
@@ -47,7 +47,8 @@ else {
   greetingText = '🙋‍♂️Hi,Good Night!';
 }
 
-greetingElement.innerHTML=`<h2> ${greetingText} </h2>`;
+greetingElement.innerHTML=`<h2> ${greetingText} </h2>
+                          <p>Update: Added Lost and Found Menu</P>`;
 setTimeout(() => {
   greetingElement.innerHTML = '';
 }, 5000);
